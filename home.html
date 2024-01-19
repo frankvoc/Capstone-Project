@@ -6,41 +6,57 @@
   <title>Le couturier</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
   <style>
-    /* Empty for now */
+     .island-moments {
+      font-family: 'Island Moments', sans-serif;
+    }
+    .italiana{
+      font-family: 'Italiana', sans-serif;
+    }
+    .jacques{
+      font-family: 'Jacques Francois', serif;
+    }
+    .larger-text{
+      font-size:2.5rem;
+    }
   </style>
 </head>
-<body style="background-color: #F5EAEB; font-family: sans-serif;">
-  <!-- Top bar -->
-  <div class="text-gray-700 py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
+<body style="background-color: #F5EAEB;">
+  <!--Top bar-->
+  <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="#" class="text-xl font-bold">Le Couturier</a>
+      <a href="#" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
     </div>
     <div class="flex items-center gap-4">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="#" class="text-sm hover:text-gray-900">Sign In</a>
+      <a href="#" class="text-lg font-bold island-moments"style="color: #152266;">Sign In</a>
     </div>
     </div>
   </div>
-  <!-- image with text -->
+  <!--Big image with text-->
   <div class="relative">
     <img src="img/Appointment.jpg" class="w-full h-96 object-cover">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-25 flex items-center justify-center">
-      <h1 class="text-white text-6xl font-bold">Book by Service</h1>
+      <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
     </div>
   </div>
-    <!-- Services header -->
-    <div class="text-center py-6">
-        <p class="text-lg text-gray-600">Tailor Services - prices starting at, subject to change</p>
+    <!-- Services reminder -->
+    <div class="text-center py-6" style="color: #99382C;">
+        <p class="larger-text italiana">Tailor Services - prices starting at, subject to change</p>
     </div>
-  <!-- Services section -->
+  <!--Services start-->
   <div class="container mx-auto my-10">
-    <!-- Service 1 -->
+    <!--Service 1-->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div class="max-w-xs">
+        <div class="max-w-xs"style="color: #ffffff;">
           <h2 class="text-3xl font-bold mb-3">Service 1</h2>
           <p class="text-lg">text about service</p>
         </div>
@@ -48,9 +64,9 @@
           <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
         </a>
       </div>
-      <!-- Service 2 -->
+      <!--Service 2-->
       <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div>
+        <div style="color: #ffffff;">
           <h2 class="text-3xl font-bold mb-3">Service 2</h2>
           <p class="text-lg">text about service</p>
         </div>
@@ -58,9 +74,9 @@
           <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
         </a>
       </div>
-      <!-- Service 3 -->
+      <!--Service 3-->
       <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div>
+        <div style="color: #ffffff;">
           <h2 class="text-3xl font-bold mb-3">Service 3</h2>
           <p class="text-lg">text about service</p>
         </div>
@@ -68,13 +84,14 @@
           <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
         </a>
       </div>
-       <!-- Additional services will follow here -->
+       <!--Additional services will follow here-->
     </div>
   </div>
-  <!-- Contact form section -->
+  <!--Services end-->
+  <!--Contact form section-->
   <div class="py-10 px-5" style="background-color: #F5EAEB;">
     <div class="container mx-auto">
-      <div class="max-w-2xl mx-auto text-center" >
+      <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
         <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
         <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
         <form action="#">
@@ -86,10 +103,10 @@
       </div>
     </div>
   </div>
-  <!-- Footer with address and map -->
-  <div class="bg-blue-900 text-white py-10">
+  <!--Footer with address and map-->
+  <div class="py-10" style="background-color: #F5EAEB;">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
-      <div>
+      <div style="color: #99382C;">
         <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3>
         <p>Get Directions</p>
         <p class="my-3">(617) 497-1258</p>
@@ -100,6 +117,6 @@
         <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
       </div>
       <div>
-        <!-- Actual Google Maps api for end prod. -->
+        <!--Actual Google Maps api for end prod-->
         <img src="img/Screen Shot 2024-01-15 at 6.31 2.png"class="w-full">
-      </
+
