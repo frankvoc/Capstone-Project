@@ -35,11 +35,25 @@
         <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
         Admin Login
     </header>
+    <div class="flex min-h-screen items-center justify-center">
+    <div class="flex-1 flex justify-center">
+      <img src="img/Woman Standing with Laptop.png" alt="Woman Standing with Laptop" class="absolute bottom-0 left-64 m-8 top-40">
+    </div>
   <div class="text-center py-6">
     <h2 class="text 2x1 font-semibold mb-6 dm-serif">Log In</h2>
     <p class="mb-4 text-gray-700">Welcome Back,<br> Please Enter your Information</p>
-
     <form class="space-y-4">
+        <div>
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" placeholder="Email" />
         </div>
-        <label for="email" class="sr-only">Email</label>
-        <input type="email" id="email" class="w-64 p-2 border border-gray rounded" placeholder="Email"/>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded" placeholder="Password" />
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded">Login</button>
+      </form>
+    </div>
+  </div>
+  </body>
+  </html>
