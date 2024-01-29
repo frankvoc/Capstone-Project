@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
      .island-moments {
       font-family: 'Island Moments', sans-serif;
     }
@@ -24,9 +27,71 @@
     .larger-text{
       font-size:2.5rem;
     }
+    .announcement-popup {
+      position: fixed; /* Updated to fixed */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* High z-index to be above other content */
+  }
+
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .close-button {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+  a:hover, button:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* .announcement-popup { */
+    /* ... existing styles ... */
+    /* animation: fadeIn 1s ease-out;
+  } */
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .grid > div {
+    opacity: 0;
+    animation: slideUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--animation-order) * 0.2s);
+  }
+
+  .grid > div:nth-child(1) { --animation-order: 1; }
+  .grid > div:nth-child(2) { --animation-order: 2; }
+  .grid > div:nth-child(3) { --animation-order: 3; }
+  #contactUsSection {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-out;
+  }
+
   </style>
 </head>
 <body style="background-color: #F5EAEB;">
+  
   <!--Top bar-->
   <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
@@ -45,6 +110,14 @@
     <img src="img/Appointment.jpg" class="w-full h-96 object-cover">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-25 flex items-center justify-center">
       <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
+    </div>
+  </div>
+   <!-- Pop-up Announcement Box -->
+   <div id="announcementPopup" class="announcement-popup hidden">
+    <div class="popup-content">
+      <span class="close-button" onclick="closePopup()">&times;</span>
+      <h2>Announcement</h2>
+      <p>announcement here</p>
     </div>
   </div>
     <!-- Services reminder -->
@@ -89,7 +162,7 @@
   </div>
   <!--Services end-->
   <!--Contact form section-->
-  <div class="py-10 px-5" style="background-color: #F5EAEB;">
+  <div class="py-10 px-5" style="background-color: #F5EAEB;" id="#contactUsSection">
     <div class="container mx-auto">
       <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
         <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
@@ -119,4 +192,30 @@
       <div>
         <!--Actual Google Maps api for end prod-->
         <img src="img/Screen Shot 2024-01-15 at 6.31 2.png"class="w-full">
+
+        <script>
+          window.onload = function() {
+            document.getElementById("announcementPopup").classList.remove("hidden");
+          };
+      
+          function closePopup() {
+            document.getElementById("announcementPopup").classList.add("hidden");
+            setTimeout(() => {
+              document.getElementById("contactUsSection").style.opacity = 1;
+            }, 500);
+          }
+              window.addEventListener('scroll', () => {
+        const elements = document.querySelectorAll('.service-box');
+        const windowHeight = window.innerHeight;
+
+        elements.forEach(el => {
+          const position = el.getBoundingClientRect().top;
+          if (position < windowHeight - 100) {
+            el.classList.add('slide-in');
+          }
+        });
+      });
+        </script>
+      </body>
+</html>
 
