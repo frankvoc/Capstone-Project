@@ -8,10 +8,10 @@
       "label": "Open PHP Server",
       "command": "Chrome",
       "windows": {
-        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
       },
       "args": [
-        "http://localhost/se266/${relativeFile}"
+        "http://localhost/SE265_Capstone/${relativeFile}"
       ],
       "presentation": {
         "echo": false,
