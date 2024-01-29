@@ -31,12 +31,12 @@
   <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="#" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
+      <a href="home.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
     </div>
     <div class="flex items-center gap-4">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="#" class="text-lg font-bold island-moments"style="color: #152266;">Sign In</a>
+      <a href="adminLogin.php" class="text-lg font-bold island-moments"style="color: #152266;">Sign In</a>
     </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
           <input type="text" placeholder="Name" class="block w-full p-3 mb-4">
           <input type="email" placeholder="Email" class="block w-full p-3 mb-4">
           <textarea placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
-          <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Send</button>
+          <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
         </form>
       </div>
     </div>
@@ -107,8 +107,7 @@
   <div class="py-10" style="background-color: #F5EAEB;">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
       <div style="color: #99382C;">
-        <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3>
-        <p>Get Directions</p>
+        <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3> 
         <p class="my-3">(617) 497-1258</p>
         <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
         <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
@@ -118,4 +117,7 @@
       </div>
       <div>
         <!--Actual Google Maps api for end prod-->
-        <img src="img/Screen Shot 2024-01-15 at 6.31 2.png"class="w-full">
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
