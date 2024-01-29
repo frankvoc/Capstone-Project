@@ -28,16 +28,16 @@
       font-size:2.5rem;
     }
     .announcement-popup {
-      position: fixed; /* Updated to fixed */
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* High z-index to be above other content */
+    z-index: 1000;
   }
 
   .popup-content {
@@ -65,10 +65,6 @@
     to { opacity: 1; }
   }
 
-  /* .announcement-popup { */
-    /* ... existing styles ... */
-    /* animation: fadeIn 1s ease-out;
-  } */
   @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
@@ -84,14 +80,12 @@
   .grid > div:nth-child(2) { --animation-order: 2; }
   .grid > div:nth-child(3) { --animation-order: 3; }
   #contactUsSection {
-    opacity: 0; /* Initially hidden */
+    opacity: 0;
     transition: opacity 0.5s ease-out;
   }
-
   </style>
 </head>
 <body style="background-color: #F5EAEB;">
-  
   <!--Top bar-->
   <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
@@ -189,9 +183,9 @@
         <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
       </div>
       <div>
-        <!--Actual Google Maps api for end prod-->
-        <img src="img/Screen Shot 2024-01-15 at 6.31 2.png"class="w-full">
-
+      <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         <script>
           window.onload = function() {
             document.getElementById("announcementPopup").classList.remove("hidden");
@@ -218,7 +212,5 @@
       </body>
 </html>
 
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+      
         
