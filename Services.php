@@ -54,7 +54,7 @@
   <div class="relative h-32 w-64 ...">
     <div class="absolute left-0 top-0 h-16 w-16 ...">
       <div class="size-40 ...">
-        <img src="img/shutterstock_655460896.webp" alt="Avatar" style="border-radius: 50%;" >
+        <img src="img/shutterstock_655460896.webp" alt="Avatar" style="border-radius: 50%; " >
       </div>
     </div>
   </div>
@@ -67,6 +67,7 @@
     </div>
   </div>
 </div>
+
 
   <div class="py-10" style="background-color: #F5EAEB;">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
