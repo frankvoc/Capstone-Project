@@ -60,7 +60,6 @@
     transform: scale(1.05);
     transition: transform 0.3s ease;
   }
- 
   </style>
 </head>
 <body style="background-color: #F5EAEB;">
@@ -73,7 +72,7 @@
     </div>
     <div class="flex items-center gap-4">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="adminLogin.php" class="text-xl font-bold island-moments"style="color: #152266;">Sign In</a>
+      <a href="adminLogin.php" class="text-xl font-bold jacques"style="color: #152266;">Sign In</a>
     </div>
     </div>
   </div>
@@ -152,13 +151,15 @@
   <div class="py-10" style="background-color: #F5EAEB;">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
       <div style="color: #99382C;">
-        <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3> 
-        <p class="my-3">(617) 497-1258</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
+        <h3 class="text-2xl font-bold mb-3 jacques">1738 Massachusetts Ave Cambridge, MA 02138</h3> 
+        <p class="my-3 text-2xl jacques">(617) 497-1258</p>
+        <p class="text-2xl jacques">Mon: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Tue: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Wed: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Thu: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Fri: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Sat: 9:00AM - 6:00PM</p>
+        <p class="text-2xl jacques">Sun: Closed</p>
       </div>
       <div>
       <div>
@@ -178,7 +179,6 @@
               window.addEventListener('scroll', () => {
         const elements = document.querySelectorAll('.service-box');
         const windowHeight = window.innerHeight;
-
         elements.forEach(el => {
           const position = el.getBoundingClientRect().top;
           if (position < windowHeight - 100) {
