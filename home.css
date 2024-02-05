@@ -1,3 +1,5 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 .island-moments {
     font-family: 'Island Moments', sans-serif;
   }
@@ -23,7 +25,7 @@ main{
   grid-template-areas: "n n n n n n"
                        "v v v v v v"
                        "c c c c c c"
-                       "l l l s s s"
+                       "s s s s s s"
                        "w w w w w w"
                        "b b b b b b"
                        "m m m m m m";
@@ -66,6 +68,15 @@ video{
   font-size: 25px; 
 }
 #book{
+  margin-top: 3%;
   display: flex; 
   flex-direction: column;
 }
+#locationRow{ 
+  display: flex;
+  grid-area: s; 
+
+  
+}
+
+
