@@ -81,16 +81,34 @@
         margin-right: 20px; 
       }
 
-      .text-content, .gallery {
-         margin: 20px;
-        }
-
-      .gallery img {
-          width: 100px; /* Adjust as per your requirement */
-          height: 100px; /* Adjust as per your requirement */
-          margin: 10px;
-          border-radius: 10px; /* Optional for rounded corners */
+      .gallery-container {
+        max-width: 1000px; 
+        position: relative;
+        margin: auto;
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+        margin-top: 190px;
       }
+
+      
+      .mySlides {
+        display: none;
+        max-width: 100%; /* Ensures image is responsive and doesn't overflow */
+        height: auto;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+      }
+
 
       .text-content {
         display: flex;
@@ -133,7 +151,7 @@
         animation: fadeInUp 0.5s ease-out;
     }
 
-    /* Add a class for animating the fade out */
+    /* Added a class for animating the fade out */
     .fadeOutDown {
         animation: fadeOutDown 0.5s ease-out forwards;
     }
@@ -189,14 +207,24 @@
       <img src="img/shutterstock_655460896.webp" alt="ServicePicture1" style="width: 304px; height: 304px; flex-shrink: 0; border-radius: 148.5px; margin-top: 100px; margin-left: 20px;">
       <div class="text-content">
         <h1>Header</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        </p>
+        <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
       </div>
+      
+      
     </div>
     <div class="Gallery">
-      <img src="img/how-to-find-a-tailor.jpg" alt="Gallery Image 1" >
-      <img src="img/shutterstock_655460896.webp" alt="Gallery Image 2">
+      <div class="gallery-container relative w-full mx-auto">
+        <!-- Slides -->
+        <div class="mySlides fade">
+          <img src="img/shutterstock_655460896.webp" class="mx-auto" style="max-width:80%;">
+        </div>
+    
+        <div class="mySlides fade">
+          <img src="img/how-to-find-a-tailor.jpg" class="mx-auto" style="max-width:80%;">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -207,11 +235,12 @@
     <img src="img/shutterstock_655460896.webp" alt="ServicePicture1" style="width: 304px; height: 304px; flex-shrink: 0; border-radius: 148.5px; margin-top: 100px; margin-left: 20px;">
     <div class="text-content">
       <h1>Header</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      </p>
+      <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
     </div>
   </div>
+  
 </div>
 
 
@@ -222,7 +251,9 @@
       <h1>Header</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Contact Us</button>
     </div>
   </div>
 </div>
@@ -278,7 +309,6 @@
    
     popup.classList.add('fadeOutDown');
 
-    // Wait for the animation to finish before hiding the popup
     setTimeout(function() {
         popup.classList.add('hidden');
     }, 500); 
@@ -297,28 +327,20 @@
     });
     });
 
-  var slideIndex = 1;
-  showDivs(slideIndex);
 
-  function plusDivs(n) {
-    showDivs(slideIndex += n);
-  }
+  var slideIndex = 0;
+  showSlides();
 
-  function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
-        x[i].classList.remove("show");
-      }
-      x[slideIndex-1].style.display = "block";
-      x[slideIndex-1].classList.add("show");
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
     }
-
-  setInterval(function() {
-    plusDivs(1);
-  }, 3000)
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+  }
   </script>
 </body>
