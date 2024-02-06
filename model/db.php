@@ -1,19 +1,15 @@
 
 <?php
 
-$ini = parse_ini_file( __DIR__ . '/dbconfig.ini');
+$config = parse_ini_file('dbconfig.ini');
 
-// var_dump($ini);
-// exit;
-
-$db = new PDO(
-                "mysql:host=" . $ini['servername'] . 
-                ";port=" . $ini['port'] . 
-                ";dbname=" . $ini['dbname'], 
-                $ini['username'], 
-                $ini['password']);
-
-
-$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-//var_dump($db);
+try{
+    //establish connection
+    $dsn = "mysql:host={$config['servername']};port={$config['port']};dbname={$config['dbname']}";
+    $pdo = new PDO($dsn, $config['username'], $config['password']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e){
+    die("Could not connect: " . $e->getMessage());
+}
+var_dump($dsn)
+?>

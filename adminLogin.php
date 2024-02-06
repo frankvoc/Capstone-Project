@@ -42,14 +42,17 @@
   <div class="text-center py-6">
     <h2 class="text 2x1 font-semibold mb-6 dm-serif">Log In</h2>
     <p class="mb-4 text-gray-700">Welcome Back,<br> Please Enter your Information</p>
-    <form class="space-y-4">
+      <?php if (isset($_GET['error'])): ?>
+        <div class="text-red-500 mb-3">Invalid login credentials. Please try again.</div>
+      <?php endif; ?>
+    <form class="space-y-4" action="controllers/processLogin.php" method="post">
         <div>
           <label for="email" class="sr-only">Email</label>
-          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" placeholder="Email" />
+          <input type="email" id="email" name="email"class="w-full p-2 border border-gray-300 rounded" placeholder="Email" />
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded" placeholder="Password" />
+          <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded" placeholder="Password" />
         </div>
         <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded">Login</button>
       </form>
