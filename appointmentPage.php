@@ -106,20 +106,19 @@
   </a>
 </div>
   <!--Contact form section-->
-  <div class="py-10 px-5" style="background-color: #F5EAEB;" id="#contactUsSection">
-    <div class="container mx-auto">
-      <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
-        <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
-        <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
-        <form action="#">
-          <input type="text" placeholder="Name" class="block w-full p-3 mb-4">
-          <input type="email" placeholder="Email" class="block w-full p-3 mb-4">
-          <textarea placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
-          <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
-        </form>
+  <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
+          <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
+          <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
+            <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4">
+            <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4">
+            <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
+            <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
+          </form>
       </div>
-    </div>
   </div>
+</div>
   <!--Footer with address and map-->
   <div class="py-10" style="background-color: #F5EAEB;">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
@@ -127,10 +126,12 @@
         <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3> 
         <p class="my-3">(617) 497-1258</p>
         <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Tue: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Wed: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Thu: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Fri: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Sat: 9:00AM - 6:00PM</p>
+        <p class="text-sm">Sun: 9:00AM - 6:00PM</p>
       </div>
       <div>
       <div>

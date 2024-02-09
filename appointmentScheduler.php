@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Couturier - Schedule an Appointment</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,3 +38,8 @@
       <a href="appointmentPage.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
     </div>
+    <!-- https://levelup.gitconnected.com/create-a-multi-step-form-using-html-css-and-javascript-30aca5c062fc **use for reference**-->
+    <!-- https://w3sniff.com/code?id=102&title=Multi-Step-Form-with-Tailwind-CSS use for reference-->
+    <div>
+      <h1> Appoitnment Scheduler</h1>
+      <div id='mul
