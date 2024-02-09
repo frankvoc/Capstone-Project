@@ -39,20 +39,17 @@
     align-items: center;
     z-index: 1000;
   }
-
   .popup-content {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
   }
-
   .close-button {
     float: right;
     font-size: 30px;
     cursor: pointer;
   }
-
   .hidden {
     display: none;
   }
@@ -60,6 +57,10 @@
     transform: scale(1.05);
     transition: transform 0.3s ease;
   }
+  .booking-circle:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+    }
   </style>
 </head>
 <body style="background-color: #F5EAEB;">
@@ -83,7 +84,7 @@
       <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
     </div>
   </div>
-   <!-- Pop-up Announcement Box -->
+   <!--Pop-up Announcement Box-->
    <div id="announcementPopup" class="announcement-popup hidden">
     <div class="popup-content">
       <span class="close-button" onclick="closePopup()">&times;</span>
@@ -91,47 +92,19 @@
       <p>announcement here</p>
     </div>
   </div>
-    <!-- Services reminder -->
+    <!--Services reminder-->
     <div class="text-center py-6" style="color: #99382C;">
         <p class="larger-text italiana">Tailor Services - prices starting at, subject to change</p>
     </div>
-  <!--Services start-->
-  <div class="container mx-auto my-10">
-    <!--Service 1-->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div class="max-w-xs"style="color: #ffffff;">
-          <h2 class="text-3xl font-bold mb-3">Service 1</h2>
-          <p class="text-lg">text about service</p>
-        </div>
-        <a href="#" class="inline-block self-start">
-          <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
-        </a>
-      </div>
-      <!--Service 2-->
-      <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div style="color: #ffffff;">
-          <h2 class="text-3xl font-bold mb-3">Service 2</h2>
-          <p class="text-lg">text about service</p>
-        </div>
-        <a href="#" class="inline-block">
-          <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
-        </a>
-      </div>
-      <!--Service 3-->
-      <div class="flex justify-between items-center p-4 rounded" style="background-color: #D05B5F;">
-        <div style="color: #ffffff;">
-          <h2 class="text-3xl font-bold mb-3">Service 3</h2>
-          <p class="text-lg">text about service</p>
-        </div>
-        <a href="#" class="inline-block">
-          <img src="img/62c6f5307a58a4aa1fb770b1.png"class="w-32 h-32">
-        </a>
-      </div>
-       <!--Additional services will follow here-->
+    <!--New Services-->
+    <div class="container mx-auto my-10 text-center">
+    <a href="" class="inline-block">
+    <div class="booking-circle flex flex-col items-center justify-center rounded-full h-64 w-64 bg-red-500 text-white mx-auto">
+      <i class="fas fa-calendar-check fa-7x"></i>
+      <p class="text-xl font-bold mt-3">Book an Appointment</p>
     </div>
-  </div>
-  <!--Services end-->
+  </a>
+</div>
   <!--Contact form section-->
   <div class="py-10 px-5" style="background-color: #F5EAEB;" id="#contactUsSection">
     <div class="container mx-auto">
@@ -161,7 +134,7 @@
       </div>
       <div>
       <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="750" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <script>
           window.onload = function() {
