@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le couturier</title>
+  <title>Le Couturier - Appointment Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +98,7 @@
     </div>
     <!--New Services-->
     <div class="container mx-auto my-10 text-center">
-    <a href="" class="inline-block">
+    <a href="appointmentScheduler.php" class="inline-block">
     <div class="booking-circle flex flex-col items-center justify-center rounded-full h-64 w-64 bg-red-500 text-white mx-auto">
       <i class="fas fa-calendar-check fa-7x"></i>
       <p class="text-xl font-bold mt-3">Book an Appointment</p>
