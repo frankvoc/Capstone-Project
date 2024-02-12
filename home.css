@@ -72,11 +72,30 @@ video{
   display: flex; 
   flex-direction: column;
 }
-#locationRow{ 
+.container{ 
   display: flex;
   grid-area: s; 
-
-  
 }
-
-
+#mission{ 
+    display: flex; 
+    justify-content: end;
+    padding-top: 10%;
+    grid-area: w; 
+}
+#text{
+    display: flex; 
+    flex-direction: column;
+    padding-left: 10rem; 
+    padding-right: 10rem;
+}
+#ti{ 
+    font-family: 'Italiana', sans-serif;
+    font-size: 25px;
+    color: #C1373C;
+}
+#desc{
+    color: #C1373C;
+}
+#flickT{
+    padding-right: 2rem;
+}
