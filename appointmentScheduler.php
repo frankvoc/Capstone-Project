@@ -217,27 +217,23 @@
       }});
       document.getElementById('timeSlots').addEventListener('click', function(e) {
     if (e.target.classList.contains('time-slot')) {
-      //Remove 'selected' from all time slots
       document.querySelectorAll('.time-slot').forEach(function(slot) {
         slot.classList.remove('selected');
       });
-      // dd 'selected' to the clicked time slot
+      //selected (highligted) date
       e.target.classList.add('selected');
     }
   });
   document.querySelectorAll('.calendar-day').forEach(day => {
     day.addEventListener('click', function() {
-      //Remove selected class from all days
       document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => {
         selectedDay.classList.remove('selected');
       });
-      // Add selected class to clicked day
       day.classList.add('selected');
     });
   });
 </script>
 </body>
 </html>
-    
     <!-- https://levelup.gitconnected.com/create-a-multi-step-form-using-html-css-and-javascript-30aca5c062fc **use for reference**-->
     <!-- https://w3sniff.com/code?id=102&title=Multi-Step-Form-with-Tailwind-CSS use for reference-->
