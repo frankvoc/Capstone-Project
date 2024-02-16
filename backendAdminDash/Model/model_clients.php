@@ -6,7 +6,7 @@ include (__DIR__ . '/db.php');
 // exit;
 
 
-function getCustomer() {
+function getCustomers() {
     //grab $db object = 
     //needs global scope since object is coming from outside the function
     global $db;
@@ -44,9 +44,9 @@ function addCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum
         ":t" => $FirstName,
         ":l" => $LastName,
         ":m" => $ApptTime,
-        ":b" => $Stat
-        ":a" => $Email
-        ":o" => $PhoneNum
+        ":b" => $Stat,
+        ":a" => $Email,
+        ":o" => $PhoneNum,
         ":x" => $JobDesc
     );
 
@@ -65,7 +65,7 @@ function deleteCustomer ($Customer_ID){
     global $db;
 
     $results = "Data was not deleted.";
-    $stmt = $db->prepare("DELETE FROM customer WHERE id = :id");
+    $stmt = $db->prepare("DELETE FROM customers WHERE id = :id");
 
     $stmt->bindValue(':id', $id);
 
@@ -76,7 +76,7 @@ function deleteCustomer ($Customer_ID){
     return ($results);
 }
 
-function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat){
+function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 
     //needs global scope since object is coming from outside the function
     global $db;
@@ -112,7 +112,7 @@ function getCustomer ($Customer_ID){
 
     $results = [];
 
-    $stmt = $db->prepare("SELECT * FROM customer WHERE Customer_ID = :id");
+    $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :id");
     $stmt->bindValue(':id', $id);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {

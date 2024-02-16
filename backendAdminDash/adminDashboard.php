@@ -1,3 +1,17 @@
+<?php
+    include (__DIR__ . '/Model/model_clients.php');
+    session_start();
+
+
+    if(isset($_POST['deleteCustomer'])){
+        $id = filter_input(INPUT_POST, 'Customer_ID');
+        deleteCustomer($id);
+    }
+
+    $customers = getCustomers();
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,19 +39,18 @@
       margin:0;
       padding:0;
       font-family: sans-serif;
-      background: linear-gradient(#141e30, #243b55);
     }
     h2
     {
-      color:white;
+      color:black;
     }
     h1
     {
-      color:white;
+      color:black;
     }
     label
     {
-      color:white;
+      color:black;
     }
     .wrapper 
     {
@@ -75,13 +88,113 @@
 <body style="background-color: #F5EAEB;">
     <div class="min-h-screen flex flex-col items-center justify-center">
         <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
-            Admin Login
+            Admin Dashboard
         </header>
     <div class="flex min-h-screen items-center justify-center">
     <div class="flex-1 flex justify-center">
-    <div class="bg-white border border-black py-2 px-4 rounded">
-        <a href="../adminLogin.php" class="text-xl font-bold" style="color: #152266;"></a>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" href="adminLogin.php">Logout</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" href="#"></a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" href="#">Add Customer</a>
+    </li>
+    </ul>
     </div>
-    
+
+    <div class="col-sm-offset-2 col-sm-10">
+     
+                
+        
+     <h1>Search</h1>
+           
+     <a href="adminDashboard.php">View Customers</a>
+     <?php
+ 
+
+    if (isset($_POST['search'])) {
+        $FirstName = filter_input(INPUT_POST, 'FirstName');
+        $LastName = filter_input(INPUT_POST, 'LastName');
+    }else{
+        $FirstName = '';
+        $LastName = '';
+    }
+
+
+        $customers = searchCustomer($FirstName, $LastName);
+ 
+    ?>
+
+
+
+<form method="POST">
+        <div class="wrapper">
+            <div class="label">
+                <label>First Name:</label>
+            </div>
+            <div>
+                <input type="text" name="FirstName" value="<?= $FirstName; ?>" />
+            </div>
+            <div class="label">
+                <label>Last Name:</label>
+            </div>
+            <div>
+                <input type="text" name="LastName" value="<?=  $LastName; ?>" />
+            </div>
+
+            <div>
+                &nbsp;
+            </div>
+            <div>
+                <input type="submit" name="search" value="Search" />
+            </div>
+           
+        </div>
+    </form>
+ 
+
+    <h2> Customers</h2>
+
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Appt Time</th>
+                <th>Status</th>
+                <th>Phone Number</th>
+                <th>Job Desc</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($customers as $c): ?>
+                <tr>
+                    <td><?php echo $c['Customer_ID']; ?></td>
+                    <td><?php echo $c['FirstName']; ?></td>
+                    <td><?php echo $c['LastName']; ?></td>
+                    <td><?php echo $c['ApptTime']; ?></td>
+                    <td><?php echo $c['Stat']; ?></td>
+                    <td><?php echo $c['PhoneNum']; ?></td>
+                    <td><?php echo $c['JobDesc']; ?></td>
+                    <td>
+                        <a href="editCustomers.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                    <!-- FORM FOR DELETE FUNCTIONALITY -->
+                    <form action='adminDashboard.php' method='post'>
+                        <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID'];?>"/>
+                        <input class="" type="submit" name="deleteCustomer" value="Delete" />
+                        
+                    </form>
+                </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </body>
 </html>
