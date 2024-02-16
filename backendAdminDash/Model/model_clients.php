@@ -15,7 +15,7 @@ function getCustomer() {
     $results = [];
 
     //prepare our SQL statement
-    $stmt = $db->prepare("SELECT Customer_ID, FirstName, LastName, ApptTime, Stat FROM customers ORDER BY LastName ASC");
+    $stmt = $db->prepare("SELECT Customer_ID, FirstName, LastName, ApptTime, Stat, Email, PhoneNum, JobDesc FROM customers ORDER BY LastName ASC");
 
     //if our SQL statement reutrns results, populate our results array
     if($stmt->execute() && $stmt->rowCount() > 0) {
@@ -27,7 +27,7 @@ function getCustomer() {
 
 }
 
-function addCustomer ($FirstName, $LastName, $ApptTime, $Stat){
+function addCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 
     //needs global scope since object is coming from outside the function
     global $db;
@@ -36,8 +36,8 @@ function addCustomer ($FirstName, $LastName, $ApptTime, $Stat){
     $results = [];
 
     //prepare our SQL statement
-    $sql = "INSERT INTO customers SET FirstName = :t, LastName = :l,ApptTime = :m, Stat = :b";
-    $stmt = $db->prepare("INSERT INTO Customers SET FirstName = :t, LastName = :l, ApptTime = :m, Stat = :b");
+    $sql = "INSERT INTO customers SET FirstName = :t, LastName = :l,ApptTime = :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x ";
+    $stmt = $db->prepare("INSERT INTO Customers SET FirstName = :t, LastName = :l, ApptTime = :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x");
 
     //bind our variables
     $binds = array(
@@ -45,6 +45,9 @@ function addCustomer ($FirstName, $LastName, $ApptTime, $Stat){
         ":l" => $LastName,
         ":m" => $ApptTime,
         ":b" => $Stat
+        ":a" => $Email
+        ":o" => $PhoneNum
+        ":x" => $JobDesc
     );
 
     //if our SQL statement reutrns results, populate our results array
@@ -82,7 +85,7 @@ function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat){
     $results = [];
 
     //prepare our SQL statement
-    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b WHERE Customer_ID = :id";
+    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x WHERE Customer_ID = :id";
     $stmt = $db->prepare($sql);
 
     $stmt->bindValue(':id', $Customer_ID);
@@ -90,6 +93,9 @@ function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat){
     $stmt->bindValue(':l', $LastName);
     $stmt->bindValue(':m', $ApptTime);
     $stmt->bindValue(':b', $Stat);
+    $stmt->bindValue(':a', $Email);
+    $stmt->bindValue(':o', $PhoneNum);
+    $stmt->bindValue(':x', $JobDesc);
 
     //if our SQL statement reutrns results, populate our results array
     if($stmt->execute($binds) && $stmt->rowCount() > 0) {

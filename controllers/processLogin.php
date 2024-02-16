@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $_SESSION['adminid'] = $admin['adminid'];
         $_SESSION['adminemail'] = $admin['adminemail'];
         //redirect to dashboard
-        header("Location: ../backend/adminDashboard.php");
+        header("Location: ../backendAdminDash/adminDashboard.php");
         exit;
     }else{//failed login
         header("Location: ../adminLogin.php?error=invalidcredentials");

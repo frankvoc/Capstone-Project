@@ -13,7 +13,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
   <style>
+    html 
+    {
+      height: 100%;
+    }
+    body 
+    {
+      margin:0;
+      padding:0;
+      font-family: sans-serif;
+      background: linear-gradient(#141e30, #243b55);
+    }
+    h2
+    {
+      color:white;
+    }
+    h1
+    {
+      color:white;
+    }
+    label
+    {
+      color:white;
+    }
+    .wrapper 
+    {
+      display: flex;
+      align-items: center;
+    }
+
+    .label 
+    {
+      margin-right: 10px;
+    }
+
+    input[type="text"],
+    input[type="submit"] 
+    {
+      margin-bottom: 10px;
+    }
      .island-moments {
       font-family: 'Island Moments', sans-serif;
     }
@@ -39,7 +80,8 @@
     <div class="flex min-h-screen items-center justify-center">
     <div class="flex-1 flex justify-center">
     <div class="bg-white border border-black py-2 px-4 rounded">
-        <a href="../adminLogin.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
+        <a href="../adminLogin.php" class="text-xl font-bold" style="color: #152266;"></a>
     </div>
+    
 </body>
 </html>
