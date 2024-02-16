@@ -82,7 +82,7 @@
 <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="home.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
+      <a href="appointmentPage.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
     </div>
     <div class="flex items-center gap-4">
