@@ -12,6 +12,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          timeZone: 'EST',
+          initialView: 'dayGridMonth',
+          events: '/api/demo-feeds/events.json',
+          editable: true,
+          selectable: true
+        });
+        calendar.render();
+      });
+
+    </script>
   <style>
     html {
       scroll-behavior: smooth;
@@ -49,6 +64,10 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
+  #calendar{
+    width:100%;
+    margin:0 auto;
+  }
   .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -79,6 +98,7 @@
   </style>
 </head>
 <body class="bg-red-100">
+        <!-- <div id="calendar"></div> -->
 <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
@@ -93,11 +113,10 @@
   </div>
 <div class="container mx-auto p-4">
   <h2 class="text-center text-6xl py-6 italiana" style="color: #99382C;">Schedule Appointment</h2>
-  <br>
-  <br>
   <div class="max-w-md mx-auto p-8 rounded-lg">
     <form id="appointmentForm" class="space-y-6">
       <div id="step1" class="step" data-step="1">
+        <h2 class="text-center text-4xl py-6 italiana" style="color: #99382C;">Provide Contact</h2>
         <div>
           <label for="firstName" class="text-sm font-medium text-gray-700">First Name</label>
           <input type="text" id="firstName" name="firstName" class="w-full p-2 border border-gray-300 rounded mt-1" required>
@@ -123,7 +142,8 @@
       <!--other steps-->
       <div id="step2" class="step hidden" data-step="2">
       <div>
-          <label for="jobDescription" class="text-sm font-medium text-gray-700">Job Description</label>
+          <h2 class="text-center text-3xl py-6 italiana" style="color: #99382C;">Provide a Job Description</h2>
+          <label for="jobDescription" class="text-sm font-medium text-gray-700"></label>
           <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border border-gray-300 rounded mt-1" rows="4" required></textarea>
         </div>
         <div class="flex justify-between">
@@ -132,7 +152,7 @@
         </div>
       </div>
       <div id="step3" class="step hidden" data-step="3">
-        <h3 class="text-xl font-semibold mb-4">Schedule a Date and Time</h3>
+      <h2 class="text-center text-3xl py-6 italiana" style="color: #99382C;">Schedule a Date and Time</h2>
         <!--calendar view -->
         <div class="calendar my-5">
         <div class="calendar-header">
@@ -224,14 +244,14 @@
       e.target.classList.add('selected');
     }
   });
-  document.querySelectorAll('.calendar-day').forEach(day => {
-    day.addEventListener('click', function() {
-      document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => {
-        selectedDay.classList.remove('selected');
-      });
-      day.classList.add('selected');
-    });
-  });
+  // document.querySelectorAll('.calendar-day').forEach(day => {
+  //   day.addEventListener('click', function() {
+  //     document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => {
+  //       selectedDay.classList.remove('selected');
+  //     });
+  //     day.classList.add('selected');
+  //   });
+  // });
 </script>
 </body>
 </html>
