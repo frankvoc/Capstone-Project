@@ -65,9 +65,9 @@ function deleteCustomer ($Customer_ID){
     global $db;
 
     $results = "Data was not deleted.";
-    $stmt = $db->prepare("DELETE FROM customers WHERE id = :id");
+    $stmt = $db->prepare("DELETE FROM customers WHERE Customer_ID = :Customer_ID");
 
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':Customer_ID', $Customer_ID);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
         $results = "Data was deleted.";
@@ -85,10 +85,10 @@ function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, 
     $results = [];
 
     //prepare our SQL statement
-    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x WHERE Customer_ID = :id";
+    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x WHERE Customer_ID = :Customer_ID";
     $stmt = $db->prepare($sql);
 
-    $stmt->bindValue(':id', $Customer_ID);
+    $stmt->bindValue(':CUstomer_ID', $Customer_ID);
     $stmt->bindValue(':t', $FirstName);
     $stmt->bindValue(':l', $LastName);
     $stmt->bindValue(':m', $ApptTime);
@@ -112,7 +112,7 @@ function getCustomer ($Customer_ID){
 
     $results = [];
 
-    $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :id");
+    $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :Customer_ID");
     $stmt->bindValue(':id', $id);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
