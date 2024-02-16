@@ -95,7 +95,7 @@
   <h2 class="text-center text-6xl py-6 italiana" style="color: #99382C;">Schedule Appointment</h2>
   <br>
   <br>
-  <div class="max-w-md mx-auto p-8 border rounded-lg">
+  <div class="max-w-md mx-auto p-8 rounded-lg">
     <form id="appointmentForm" class="space-y-6">
       <div id="step1" class="step" data-step="1">
         <div>
