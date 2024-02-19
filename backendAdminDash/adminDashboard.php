@@ -62,12 +62,42 @@
     {
       margin-right: 10px;
     }
-
+    /*Css so that input text and submit have the same margin-bottom padding */
     input[type="text"],
     input[type="submit"] 
     {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
+    /*Separate css for text boxes to increase height and width */
+    input[type="text"] {
+        padding: 3px 5px; 
+        font-size: 1.25rem; 
+        width: 100%; 
+        margin-bottom: 20px; 
+        border: 2px solid #ccc; 
+        border-radius: 5px; 
+    }
+    /*Separate css for submit for buttons like search and delete */
+    input[type="submit"] {
+        padding: 10px 10px ; 
+        font-size: 1.00rem; 
+        background-color: #007bff; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+    }
+    .links-container a {
+        display: inline-block; 
+        padding: 8px 12px; 
+        margin-right: 10px; 
+        background-color: #007bff; 
+        color: white; 
+        text-decoration: none; 
+        border-radius: 5px; 
+    }
+
+
      .island-moments {
       font-family: 'Island Moments', sans-serif;
     }
@@ -83,24 +113,23 @@
     .dm-serif{
         font-family: 'DM Serif Display', serif; 
     }
+    
+    
   </style>
 </head>
 <body style="background-color: #F5EAEB;">
     <div class="min-h-screen flex flex-col items-center justify-center">
         <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
-            Admin Dashboard
+            <div class="flex justify-between items-center w-full px-4">
+                <div class="text-lg font-semibold text-center flex-1">Admin Dashboard</div>
+                <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
+            </div>
         </header>
     <div class="flex min-h-screen items-center justify-center">
     <div class="flex-1 flex justify-center">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" href="adminLogin.php">Logout</a>
-    </li>
-    <li class="nav-item" role="presentation">
         <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" href="#"></a>
-    </li>
-    <li class="nav-item" role="presentation">
-        <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" href="#">Add Customer</a>
     </li>
     </ul>
     </div>
@@ -111,7 +140,11 @@
         
      <h1>Search</h1>
            
-     <a href="adminDashboard.php">View Customers</a>
+     <div class="links-container" style="margin-bottom: 20px;">
+        <a href="adminDashboard.php" class="btn btn-info" style="margin-right: 10px;">View Customers</a>
+        
+        <a href="addCustomer.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
+     </div>
      <?php
  
 
@@ -125,7 +158,7 @@
 
 
         $customers = searchCustomer($FirstName, $LastName);
- 
+     
     ?>
 
 
@@ -168,6 +201,7 @@
                 <th>Status</th>
                 <th>Phone Number</th>
                 <th>Job Desc</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
