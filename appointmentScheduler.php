@@ -137,7 +137,7 @@
           <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1" required>
         </div>
         <br>
-        <button type="button" id="next1" class="w-full text-white bg-green-500 text-2xl p-2 rounded hover:bg-green-600 italiana">Next</button>
+        <button type="button" id="next1" class="w-full text-white bg-green-500 text-2xl p-2 rounded hover:bg-green-600">Next</button>
       </div>
       <!--other steps-->
       <div id="step2" class="step hidden" data-step="2">
@@ -178,6 +178,26 @@
           <div class="calendar-day">8</div>
           <div class="calendar-day">9</div>
           <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
           <div class="calendar-day">31</div>
         </div>
       </div>
