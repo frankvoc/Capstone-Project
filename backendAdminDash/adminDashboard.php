@@ -123,7 +123,7 @@
         <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
             <div class="flex justify-between items-center w-full px-4">
                 <div class="text-lg font-semibold text-center flex-1">Admin Dashboard</div>
-                <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
+                <a href="../adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
             </div>
         </header>
     <div class="flex min-h-screen items-center justify-center">
