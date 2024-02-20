@@ -54,6 +54,7 @@ video{
 #contactRow{ 
   display: flex; 
   grid-area: c; 
+  justify-content: center;
   align-items: center;
   justify-content: space-between;
 }
@@ -75,6 +76,8 @@ video{
 .container{ 
   display: flex;
   grid-area: s; 
+  align-items: center;
+  margin-left: 8rem;
 }
 #mission{ 
     display: flex; 
@@ -98,4 +101,11 @@ video{
 }
 #flickT{
     padding-right: 2rem;
+}
+#contact{ 
+  grid-area: b;
+  margin-top: 5rem;
+}
+.google-map-container{
+  grid-area: m; 
 }
