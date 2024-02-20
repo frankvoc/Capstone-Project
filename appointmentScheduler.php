@@ -199,17 +199,6 @@
       </div>
     </form>
     <!--PROGRESS BAR-->
-    <div class="flex items-center justify-between mt-4">
-      <div class="flex-1 flex items-center">
-        <div class="circle w-10 h-10 flex items-center justify-center rounded-full bg-blue-500 text-white" data-step="1">1</div>
-        <div class="flex-1 bg-gray-300 h-1"></div>
-        <div class="circle w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-white" data-step="2">2</div>
-        <div class="flex-1 bg-gray-300 h-1"></div>
-        <div class="circle w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-white" data-step="3">3</div>
-        <div class="flex-1 bg-gray-300 h-1"></div>
-        <div class="circle w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-white" data-step="4">4</div>
-      </div>
-    </div>
   </div>
 </div>
 <script>
