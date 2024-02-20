@@ -116,6 +116,7 @@
             <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
             <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
           </form>
+          <br>
       </div>
   </div>
 </div>
@@ -124,18 +125,24 @@
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2">
       <div style="color: #99382C;">
         <h3 class="text-2xl font-bold mb-3">1738 Massachusetts Ave Cambridge, MA 02138</h3> 
-        <p class="my-3">(617) 497-1258</p>
-        <p class="text-sm">Mon: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Tue: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Wed: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Thu: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Fri: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Sat: 9:00AM - 6:00PM</p>
-        <p class="text-sm">Sun: 9:00AM - 6:00PM</p>
+        <p class="my-3 text-2xl">(617) 497-1258</p>
+        <p class="text-2xl">Mon: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Tue: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Wed: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Thu: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Fri: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Sat: 9:00AM - 6:00PM</p>
+        <br>
+        <p class="text-2xl">Sun: 9:00AM - 6:00PM</p>
       </div>
       <div>
       <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="750" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706551375184!5m2!1sen!2sus" width="850" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <script>
           window.onload = function() {
