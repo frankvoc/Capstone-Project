@@ -248,7 +248,9 @@
                     <form action='adminDashboard.php' method='post'>
                         <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID'];?>"/>
                         
-                        <i class="fa fa-trash-o" style="font-size:36px; color:red" type="submit" name="deleteCustomer" value="Delete"></i>
+                        <button type="submit" name="deleteCustomer" value="Delete" style="border: none; background: none;">
+                            <i class="fa fa-trash-o" style="font-size:36px; color:red"></i>
+                        </button>
                         
                     </form>
                 </td>
