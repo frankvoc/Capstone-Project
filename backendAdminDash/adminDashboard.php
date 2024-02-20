@@ -28,6 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
   <style>
     html 
@@ -171,6 +172,14 @@
             <div>
                 <input type="text" name="FirstName" value="<?= $FirstName; ?>" />
             </div>
+
+            <div>
+                &nbsp;
+            </div>
+            <div>
+                &nbsp;
+            </div>
+            
             <div class="label">
                 <label>Last Name:</label>
             </div>
@@ -222,7 +231,8 @@
                     <!-- FORM FOR DELETE FUNCTIONALITY -->
                     <form action='adminDashboard.php' method='post'>
                         <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID'];?>"/>
-                        <input class="" type="submit" name="deleteCustomer" value="Delete" />
+                        
+                        <i class="fa fa-trash-o" style="font-size:36px; color:red" type="submit" name="deleteCustomer" value="Delete"></i>
                         
                     </form>
                 </td>
