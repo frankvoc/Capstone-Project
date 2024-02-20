@@ -204,12 +204,20 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th></th>
                 <th>First Name</th>
+                <th></th>
                 <th>Last Name</th>
+                <th></th>
                 <th>Appt Time</th>
+                <th></th>
                 <th>Status</th>
+                <th></th>
                 <th>Phone Number</th>
+                <th></th>
                 <th>Job Desc</th>
+                <th></th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -218,12 +226,20 @@
             <?php foreach ($customers as $c): ?>
                 <tr>
                     <td><?php echo $c['Customer_ID']; ?></td>
+                    <th></th>
                     <td><?php echo $c['FirstName']; ?></td>
+                    <th></th>
                     <td><?php echo $c['LastName']; ?></td>
+                    <th></th>
                     <td><?php echo $c['ApptTime']; ?></td>
+                    <th></th>
                     <td><?php echo $c['Stat']; ?></td>
+                    <th></th>
                     <td><?php echo $c['PhoneNum']; ?></td>
+                    <th></th>
                     <td><?php echo $c['JobDesc']; ?></td>
+                    <th></th>
+                    <th></th>
                     <td>
                         <a href="editCustomers.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
                     </td>
