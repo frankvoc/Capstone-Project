@@ -145,6 +145,7 @@
         <a href="adminDashboard.php" class="btn btn-info" style="margin-right: 10px;">View Customers</a>
         
         <a href="addCustomer.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
+
      </div>
      <?php
  
@@ -190,6 +191,21 @@
             <div>
                 &nbsp;
             </div>
+
+            <!-- Time Frame Filter -->
+            <div class="label"><label>Time Frame:</label></div>
+            <div>
+                <select name="TimeFrame">
+                    <option value="today">Today</option>
+                    <option value="thisWeek">This Week</option>
+                    <option value="thisMonth">This Month</option>
+                </select>
+            </div>
+
+            <div>
+                &nbsp;
+            </div>
+
             <div>
                 <input type="submit" name="search" value="Search" />
             </div>
