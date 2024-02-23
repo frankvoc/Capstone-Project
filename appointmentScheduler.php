@@ -17,6 +17,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          aspectRatio: 4,
           timeZone: 'EST',
           initialView: 'dayGridMonth',
           events: '/api/demo-feeds/events.json',
@@ -65,7 +66,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   #calendar{
-    width:100%;
+    width:75%;
     margin:0 auto;
   }
   .calendar-header {
@@ -98,7 +99,7 @@
   </style>
 </head>
 <body class="bg-red-100">
-        <!-- <div id="calendar"></div> -->
+        <div id="calendar"></div>
 <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
