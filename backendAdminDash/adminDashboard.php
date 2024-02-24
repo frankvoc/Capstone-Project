@@ -58,6 +58,7 @@
       display: flex;
       align-items: center;
     }
+  
 
     .label 
     {
@@ -120,14 +121,13 @@
 </head>
 <body style="background-color: #F5EAEB;">
     <div class="min-h-screen flex flex-col items-center justify-center">
-        <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
+        <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques" style="background-color:#C1373C;">
             <div class="flex justify-between items-center w-full px-4">
                 <div class="text-lg font-semibold text-center flex-1">Admin Dashboard</div>
                 <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
             </div>
         </header>
-    <div class="flex min-h-screen items-center justify-center">
-    <div class="flex-1 flex justify-center">
+        <div class="content-container flex flex-col items-center justify-center w-full">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
         <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" href="#"></a>
@@ -135,7 +135,7 @@
     </ul>
     </div>
 
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="w-full px-4 py-8">
      
                 
         
@@ -153,13 +153,20 @@
     if (isset($_POST['search'])) {
         $FirstName = filter_input(INPUT_POST, 'FirstName');
         $LastName = filter_input(INPUT_POST, 'LastName');
-    }else{
+        $TimeFrame = filter_input(INPUT_POST, 'TimeFrame');
+
+        if ($TimeFrame === '') {
+            // Call a function that searches without considering time frame
+            $customers = searchCustomer($FirstName, $LastName);
+        } else {
+            // Use the existing getCustomers function with time frame filtering
+            $customers = getCustomers($TimeFrame);
+        }
+    } else {
         $FirstName = '';
         $LastName = '';
+        $customers = getCustomers(); // Call without parameters to get all customers
     }
-
-
-        $customers = searchCustomer($FirstName, $LastName);
      
     ?>
 
@@ -196,6 +203,7 @@
             <div class="label"><label>Time Frame:</label></div>
             <div>
                 <select name="TimeFrame">
+                    <option value="">Any Time</option>
                     <option value="today">Today</option>
                     <option value="thisWeek">This Week</option>
                     <option value="thisMonth">This Month</option>
@@ -257,7 +265,7 @@
                     <th></th>
                     <th></th>
                     <td>
-                        <a href="editCustomers.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                        <a href="editCustomer.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->

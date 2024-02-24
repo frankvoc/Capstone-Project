@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../model/db.php';
+require 'Model/db.php';
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -15,10 +15,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $_SESSION['adminid'] = $admin['adminid'];
         $_SESSION['adminemail'] = $admin['adminemail'];
         //redirect to dashboard
-        header("Location: ../backendAdminDash/adminDashboard.php");
+        header("Location: adminDashboard.php");
         exit;
     }else{//failed login
-        header("Location: ../adminLogin.php?error=invalidcredentials");
+        header("Location: adminLogin.php?error=invalidcredentials");
         exit;
     }
 

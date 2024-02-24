@@ -6,25 +6,36 @@ include (__DIR__ . '/db.php');
 // exit;
 
 
-function getCustomers() {
-    //grab $db object = 
-    //needs global scope since object is coming from outside the function
+function getCustomers($timeFrame = null) {
     global $db;
-
-    //initialize return dataset
     $results = [];
-
-    //prepare our SQL statement
-    $stmt = $db->prepare("SELECT Customer_ID, FirstName, LastName, ApptTime, Stat, Email, PhoneNum, JobDesc FROM customers ORDER BY LastName ASC");
-
-    //if our SQL statement reutrns results, populate our results array
-    if($stmt->execute() && $stmt->rowCount() > 0) {
+    
+    // Base SQL statement
+    $sql = "SELECT Customer_ID, FirstName, LastName, ApptTime, Stat, Email, PhoneNum, JobDesc FROM customers";
+    
+    // Determine the time frame condition
+    $dateCondition = "";
+    switch ($timeFrame) {
+        case 'today':
+            $dateCondition = " WHERE DATE(ApptTime) = CURDATE()";
+            break;
+        case 'thisWeek':
+            $dateCondition = " WHERE YEARWEEK(ApptTime, 1) = YEARWEEK(CURDATE(), 1)";
+            break;
+        case 'thisMonth':
+            $dateCondition = " WHERE MONTH(ApptTime) = MONTH(CURDATE()) AND YEAR(ApptTime) = YEAR(CURDATE())";
+            break;
+    }
+    
+    $sql .= $dateCondition . " ORDER BY Customer_ID ASC";
+    
+    $stmt = $db->prepare($sql);
+    
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    //return our results
-    return ($results);
-
+    
+    return $results;
 }
 
 function addCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
