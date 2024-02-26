@@ -243,7 +243,7 @@
                     <td>
                         
  
-                        <a href="edit_App.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                        <a href="edit_App.php?action=Update&Customer_ID=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->

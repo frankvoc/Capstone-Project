@@ -85,7 +85,7 @@ function updateCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $Phone
     $results = [];
 
     //prepare our SQL statement
-    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x WHERE Customer_ID = :Customer_ID";
+    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = :a, PhoneNum = :o, JobDesc = :x WHERE Customer_ID = :Customer_ID";
     $stmt = $db->prepare($sql);
 
     $stmt->bindValue(':Customer_ID', $Customer_ID);
