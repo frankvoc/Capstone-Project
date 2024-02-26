@@ -1,7 +1,5 @@
 <?php
-
 $config = parse_ini_file('dbconfig.ini');
-
 $db = new PDO(
     "mysql:host=" . $config['servername'] . 
     ";port=" . $config['port'] . 
@@ -11,9 +9,6 @@ $db = new PDO(
 
 
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-
-
 try{
     //establish connection
     $dsn = "mysql:host={$config['servername']};port={$config['port']};dbname={$config['dbname']}";
@@ -22,5 +17,4 @@ try{
 } catch (PDOException $e){
     die("Could not connect: " . $e->getMessage());
 }
-var_dump($dsn)
 ?>
