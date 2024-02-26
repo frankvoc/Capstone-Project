@@ -106,7 +106,7 @@
         <br>
         <div>
           <label for="email" class="text-sm font-medium text-gray-700">Email</label>
-          <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded mt-1" required>
+          <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded mt-1" required placeholder="you@example.com">
         </div>
         <br>
         <div>
@@ -159,17 +159,42 @@
           <button type="button" id="back3" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Back</button>
           <button type="button" id="next3" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Next</button>
         </div>
-        <div id="step4" class="step hidden" data-step="4">
-          <h2 class="text-center text-4xl py-6 italiana" style="color: #99382C;">Confirm Your Appointment</h2>
-          <!--confirmation goes here (MOVE TO NEW PAGE)-->
-          <div id="confirmationDetails" class="text-lg"></div>
-          <div class="flex justify-between">
-              <button type="button" id="back4" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Back</button>
-              <button type="button" id="confirm" class="text-white bg-blue-500 p-2 rounded hover:bg-blue-600">Confirm</button>
-          </div>
-    </div>
     </form>
 <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    if(sessionStorage.getItem('firstName')){
+      document.getElementById('firstName').value = sessionStorage.getItem('firstName');
+    }
+    if(sessionStorage.getItem('lastName')){
+      document.getElementById('lastName').value = sessionStorage.getItem('lastName');
+    }
+    if(sessionStorage.getItem('email')){
+      document.getElementById('email').value = sessionStorage.getItem('email');
+    }
+    if(sessionStorage.getItem('phone')){
+      document.getElementById('phone').value = sessionStorage.getItem('phone');
+    }
+    if(sessionStorage.getItem('jobDescription')){
+      document.getElementById('jobDescription').value = sessionStorage.getItem('jobDescription');
+    }
+    if(sessionStorage.getItem('selectedDate')){
+    document.getElementById('selectedDate').value = sessionStorage.getItem('selectedDate');
+    }
+    if(sessionStorage.getItem('selectedTimeSlot')){
+      document.getElementById('selectedTimeSlot').value = sessionStorage.getItem('selectedTimeSlot');
+    }
+  })
+  //on click for step3 move user to confirmation screen
+  document.getElementById('next3').addEventListener('click',function(){
+    sessionStorage.setItem('firstName',document.getElementById('firstName').value);
+    sessionStorage.setItem('lastName',document.getElementById('lastName').value);
+    sessionStorage.setItem('email',document.getElementById('email').value);
+    sessionStorage.setItem('phone',document.getElementById('phone').value);
+    sessionStorage.setItem('jobDescription',document.getElementById('jobDescription').value);
+    sessionStorage.setItem('selectedDate',selectedDate);
+    sessionStorage.setItem('selectedTimeSlot',selectedTimeSlot);
+       window.location.href = 'confirm.php';
+});
   const form = document.getElementById('appointmentForm');
   const steps = form.querySelectorAll('.step');
   let currentStep = 1;
@@ -203,7 +228,6 @@
         } else {
             console.error("not within bounds:", currentStep);
         }
-
         //debug for step after next click + classlist
         console.log("currentstep" + currentStep, steps[currentStep - 1].classList);
     }
@@ -321,7 +345,7 @@
               <p><strong>Time Slot:</strong> ${selectedTimeSlot}</p>
           `;
       }
-      // document.getElementById('step4').classList.remove('hidden'); force show step4
+      //  document.getElementById('step4').classList.remove('hidden'); force show step4
 
 </script>
 </body>
