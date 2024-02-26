@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     include (__DIR__ . '/Model/model_clients.php');
     session_start();
 
@@ -6,6 +7,12 @@
     if(isset($_POST['deleteCustomer'])){
         $id = filter_input(INPUT_POST, 'Customer_ID');
         deleteCustomer($id);
+    }
+
+    if (isset($_POST['toggleCustomerStatus'])) {
+        // Toggle status logic here
+        header('Location: adminDashboard.php'); // Redirect
+        exit();
     }
 
     $customers = getCustomers();
@@ -149,6 +156,17 @@
      </div>
      <?php
  
+    if (isset($_POST['toggleCustomerStatus'])) {
+        $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
+        $currentStatus = getCustomerStatus($Customer_ID); 
+        // Toggle the status
+        $newStatus = ($currentStatus == 'Active') ? 'Inactive' : 'Active';
+        // Assume a function exists to update the status
+        updateCustomerStatus($Customer_ID, $newStatus);
+        // Refresh the page to show the updated status
+        header('Location: adminDashboard.php');
+        exit();
+    }
 
     if (isset($_POST['search'])) {
         $FirstName = filter_input(INPUT_POST, 'FirstName');
@@ -156,10 +174,8 @@
         $TimeFrame = filter_input(INPUT_POST, 'TimeFrame');
 
         if ($TimeFrame === '') {
-            // Call a function that searches without considering time frame
             $customers = searchCustomer($FirstName, $LastName);
         } else {
-            // Use the existing getCustomers function with time frame filtering
             $customers = getCustomers($TimeFrame);
         }
     } else {
@@ -239,6 +255,8 @@
                 <th></th>
                 <th>Phone Number</th>
                 <th></th>
+                <th>Email</th>
+                <th></th>
                 <th>Job Desc</th>
                 <th></th>
                 <th></th>
@@ -261,11 +279,22 @@
                     <th></th>
                     <td><?php echo $c['PhoneNum']; ?></td>
                     <th></th>
+                    <td><?php echo $c['Email']; ?></td>
+                    <th></th>
                     <td><?php echo $c['JobDesc']; ?></td>
                     <th></th>
-                    <th></th>
+                    
                     <td>
                         <a href="editCustomer.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <!-- Toggle Button Form -->
+                        <form action='adminDashboard.php' method='post'>
+                            <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID']; ?>"/>
+                            <button type="submit" name="toggleCustomerStatus" class="btn btn-default">
+                                <i class="fas fa-toggle-on" style="font-size:24px; color:<?= $c['Stat'] == 'In Progress', 'Completed' ? 'green' : 'grey'; ?>"></i>
+                            </button>
+                        </form>
                     </td>
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->
