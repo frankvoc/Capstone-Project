@@ -36,6 +36,11 @@
     border-radius: 0.5rem;
     cursor: pointer;
   }
+  .selected-time-slot {
+    background-color: #99382C;
+    color: 99382C; 
+    border-color: #4CAF50; 
+}
   .calendar {
     max-width: 350px;
     margin: auto;
@@ -296,11 +301,11 @@
                 timeSlotDiv.setAttribute('data-time', time);
                 timeSlotDiv.addEventListener('click', function() {
                     //remove selected feature when navigating days
-                    document.querySelectorAll('.time-slot.selected').forEach(slot => {
-                        slot.classList.remove('selected');
+                    document.querySelectorAll('.time-slot').forEach(slot => {
+                        slot.classList.remove('selected-time-slot');
                     });
                     //clicked time = selected
-                    timeSlotDiv.classList.add('selected');
+                    timeSlotDiv.classList.add('selected-time-slot');
                     selectedTimeSlot = time;
                 });
                 timeSlotsContainer.appendChild(timeSlotDiv);
@@ -317,7 +322,6 @@
           }
           generateCalendar(currentMonth, currentYear);
         });
-
         document.getElementById('nextMonth').addEventListener('click', () => {
           if (currentMonth === 11) {
             currentMonth = 0;
@@ -327,26 +331,7 @@
           }
           generateCalendar(currentMonth, currentYear);
         });
-        //populate the confirmation screen
-        function updateConfirmationScreen() {
-          const firstName = document.getElementById('firstName').value;
-          const lastName = document.getElementById('lastName').value;
-          const email = document.getElementById('email').value;
-          const phone = document.getElementById('phone').value;
-          const jobDescription = document.getElementById('jobDescription').value;
-          const confirmationDetails = document.getElementById('confirmationDetails');
-          confirmationDetails.innerHTML = `
-              <p><strong>First Name:</strong> ${firstName}</p>
-              <p><strong>Last Name:</strong> ${lastName}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Phone Number:</strong> ${phone}</p>
-              <p><strong>Job Description:</strong> ${jobDescription}</p>
-              <p><strong>Date:</strong> ${selectedDate}</p>
-              <p><strong>Time Slot:</strong> ${selectedTimeSlot}</p>
-          `;
-      }
-      //  document.getElementById('step4').classList.remove('hidden'); force show step4
-
+        
 </script>
 </body>
 </html>
