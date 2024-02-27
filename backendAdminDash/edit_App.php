@@ -58,19 +58,20 @@
         header('Location: adminDashboard.php');
 
         //ADD TEAM WAS SUBMITTED IN FORM -> GRAB SUBMITTED VALUES AND PASS TO THE addTeam() METHOD!
-    }elseif (isset($_POST['Add_team'])){
-        $action = filter_input(INPUT_POST, 'action');
-        $FirstName = filter_input(INPUT_POST, 'FirstName');
-        $LastName = filter_input(INPUT_POST, 'LastName');
-        $ApptTime = filter_input(INPUT_POST, 'ApptTime');
-        $Stat = filter_input(INPUT_POST, 'Stat');
-        $Email = filter_input(INPUT_POST, 'Email');
-        $PhoneNum = filter_input(INPUT_POST, 'PhoneNum');
-        $JobDesc = filter_input(INPUT_POST, 'JobDesc');
-        
-        addCustomer($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat,  $Email, $PhoneNum, $JobDesc);
-        header('Location: adminDashboard.php');
-    }
+    }elseif (isset($_POST['Add_Customer'])){
+            $action = filter_input(INPUT_POST, 'action');
+            $FirstName = filter_input(INPUT_POST, 'FirstName');
+            $LastName = filter_input(INPUT_POST, 'LastName');
+            $ApptTime = filter_input(INPUT_POST, 'ApptTime');
+            $Stat = filter_input(INPUT_POST, 'Stat');
+            $Email = filter_input(INPUT_POST, 'Email');
+            $PhoneNum = filter_input(INPUT_POST, 'PhoneNum');
+            $JobDesc = filter_input(INPUT_POST, 'JobDesc');
+            
+            addCustomer($FirstName, $LastName, $ApptTime, $Stat,  $Email, $PhoneNum, $JobDesc);
+            header('Location: adminDashboard.php');
+        }
+
 
 ?>
 
@@ -93,13 +94,12 @@
     </style>
 
     <!-- ADD TEAM FORM -->
-    <h2><?= $action; ?> NFL Team</h2>
-
+    <div class="col-sm-offset-1 col-sm-10"><p><a href="./adminDashboard.php">View Appointmenta</a></p></div>
     <form name="customer" method="post" action="edit_App.php">
         
         <!--FORM-->
         <div class="wrapper">
-            <input type="hidden" name="Customer_ID" value="<?= $id; ?>" />
+            <input type="hidden" name="Customer_ID" value="<?= $Customer_ID; ?>" />
 
             <div class="label">
                 <label>First Name:</label>
@@ -126,7 +126,7 @@
                 <label>Status:</label>
             </div>
             <div>
-                <input type="text" name="Status" value="<?= $Stat; ?>" />
+                <input type="text" name="Stat" value="<?= $Stat; ?>" />
             </div>
 
             <div class="label">
@@ -149,16 +149,14 @@
             <div>
                 <input type="text" name="JobDesc" value="<?= $JobDesc; ?>" />
             </div>
+    
 
 
 
             <div>
                 &nbsp;
             </div>
-            <div>
-                <!-- WE CAN USE OUR 'ACTION' VALUE FROM THE GET RESULT TO MANIPULATE THE FORM! -->
-                <input type="submit" name="Update_Customer" value = "Update Information" />
-            </div>
+            <input type="submit" name="Update_Customer" value="update" /> 
            
         </div>
 

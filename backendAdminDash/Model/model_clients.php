@@ -78,13 +78,13 @@ function deleteCustomer ($Customer_ID){
     return ($results);
 }
 
-function updateCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
+function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 
     //needs global scope since object is coming from outside the function
     global $db;
 
     //initialize return dataset
-    $results = [];
+    $results = "";
 
     //prepare our SQL statement
     $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = :a, PhoneNum = :o, JobDesc = :x WHERE Customer_ID = :Customer_ID";
@@ -100,7 +100,7 @@ function updateCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $Phone
     $stmt->bindValue(':x', $JobDesc);
 
     //if our SQL statement reutrns results, populate our results array
-    if($stmt->execute($binds) && $stmt->rowCount() > 0) {
+    if($stmt->execute() && $stmt->rowCount() > 0) {
         $results = 'Data Updated';
     }
 
@@ -115,7 +115,7 @@ function getCustomer($Customer_ID){
     $results = [];
 
     $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :Customer_ID");
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':Customer_ID', $Customer_ID);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetch(PDO::FETCH_ASSOC);

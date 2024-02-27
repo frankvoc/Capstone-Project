@@ -78,3 +78,18 @@ if(isset($_GET['action'])){
 
 
 
+
+
+    }elseif (isset($_POST['Add_team'])){
+        $action = filter_input(INPUT_POST, 'action');
+        $FirstName = filter_input(INPUT_POST, 'FirstName');
+        $LastName = filter_input(INPUT_POST, 'LastName');
+        $ApptTime = filter_input(INPUT_POST, 'ApptTime');
+        $Stat = filter_input(INPUT_POST, 'Stat');
+        $Email = filter_input(INPUT_POST, 'Email');
+        $PhoneNum = filter_input(INPUT_POST, 'PhoneNum');
+        $JobDesc = filter_input(INPUT_POST, 'JobDesc');
+        
+        addCustomer($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat,  $Email, $PhoneNum, $JobDesc);
+        header('Location: adminDashboard.php');
+    }
