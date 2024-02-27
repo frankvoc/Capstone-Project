@@ -206,7 +206,7 @@
     <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
       <div class="flex items-center">
         <div class="Home">
-        <a href="#" class="text-xl font-bold" style="color: #152266;" >
+        <a href="home.html" class="text-xl font-bold" style="color: #152266;" >
           <img src="img/Le-Couturier-new 1.png">
         </a>
       </div>

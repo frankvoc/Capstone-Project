@@ -78,7 +78,7 @@ function deleteCustomer ($Customer_ID){
     return ($results);
 }
 
-function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
+function updateCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 
     //needs global scope since object is coming from outside the function
     global $db;
@@ -87,10 +87,10 @@ function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, 
     $results = [];
 
     //prepare our SQL statement
-    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = a, PhoneNum = o, JobDesc = x WHERE Customer_ID = :Customer_ID";
+    $sql = "UPDATE customers SET FirstName = :t, LastName = :l, ApptTime= :m, Stat = :b, Email = :a, PhoneNum = :o, JobDesc = :x WHERE Customer_ID = :Customer_ID";
     $stmt = $db->prepare($sql);
 
-    $stmt->bindValue(':CUstomer_ID', $Customer_ID);
+    $stmt->bindValue(':Customer_ID', $Customer_ID);
     $stmt->bindValue(':t', $FirstName);
     $stmt->bindValue(':l', $LastName);
     $stmt->bindValue(':m', $ApptTime);
@@ -108,14 +108,14 @@ function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, 
     return ($results);
 }
 
-function getCustomer ($Customer_ID){
+function getCustomer($Customer_ID){
 
     global $db;
 
     $results = [];
 
     $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :Customer_ID");
-    $stmt->bindValue(':Customer_ID', $Customer_ID);
+    $stmt->bindValue(':id', $id);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetch(PDO::FETCH_ASSOC);
