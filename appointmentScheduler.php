@@ -38,8 +38,8 @@
   }
   .selected-time-slot {
     background-color: #99382C;
-    color: 99382C; 
-    border-color: #4CAF50; 
+    color: black; 
+    border-color: red; 
 }
   .calendar {
     max-width: 350px;
