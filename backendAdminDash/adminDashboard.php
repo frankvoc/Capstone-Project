@@ -160,7 +160,7 @@
         $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
         $currentStatus = getCustomerStatus($Customer_ID); 
         // Toggle the status
-        $newStatus = ($currentStatus == 'Active') ? 'Inactive' : 'Active';
+        $newStatus = ($currentStatus == '') ? 'In progress' : 'Completed';
         // Assume a function exists to update the status
         updateCustomerStatus($Customer_ID, $newStatus);
         // Refresh the page to show the updated status
