@@ -4,7 +4,9 @@
 include (__DIR__ . '/db.php');
 // var_dump($db);
 // exit;
-
+function isPostRequest() {
+    return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
+}
 
 function getCustomers() {
     //grab $db object = 
@@ -113,7 +115,7 @@ function getCustomer ($Customer_ID){
     $results = [];
 
     $stmt = $db->prepare("SELECT * FROM customers WHERE Customer_ID = :Customer_ID");
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':Customer_ID', $Customer_ID);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetch(PDO::FETCH_ASSOC);

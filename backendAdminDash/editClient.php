@@ -12,20 +12,18 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    include __DIR__ . '/Model/model_clients.php';
+    include (__DIR__ . '/Model/model_clients.php');
 
-    
-    $error = "";
 
     //IF COMING FROM A GET REQUEST, ASSIGN OUR ACTION AND ID!
     if(isset($_GET['action'])){
         $action = filter_input(INPUT_GET, 'action');
-        $id = filter_input(INPUT_GET, 'Customer_ID');
+        $Customer_ID = filter_input(INPUT_GET, 'Customer_ID');
 
         if($action == "Update"){
             $cust = getCustomers($Customer_ID);
-            $FirstName = $cust["teamName"];
-            $LastName = $cust['division'];
+            $FirstName = $cust["FirstName"];
+            $LastName = $cust['LastName'];
             $ApptTime = $cust["ApptTime"];
             $Stat = $cust["Stat"];
             $Email = $cust["Email"];
@@ -37,29 +35,34 @@
         }
 
         //UPDATE TEAM WAS SUBMITTED IN FORM -> GRAB SUBMITTED VALUES AND PASS TO THE updateTeam() METHOD!
-    }elseif (isset($_POST['Update_team'])){
+    }elseif (isset($_POST['updateCustomer'])){
         $action = filter_input(INPUT_GET, 'action');
-        $id = filter_input(INPUT_GET, 'Customer_ID');
-        $FirstName = $cust["teamName"];
-        $LastName = $cust['division'];
-        $ApptTime = $cust["ApptTime"];
-        $Stat = $cust["Stat"];
-        $Email = $cust["Email"];
-        $PhoneNum = $cust["PhoneNum"];
-        $JobDesc = $cust["JobDesc"];
+        $Customer_ID = filter_input(INPUT_GET, 'Customer_ID');
+        $FirstName = filter_input(INPUT_POST,'FirstName');
+        $LastName =  filter_input(INPUT_POST,'LastName');
+        $ApptTime = filter_input(INPUT_POST,'ApptTime');
+        $Stat = filter_input(INPUT_POST,'Stat');
+        $Email = filter_input(INPUT_POST,'Email');
+        $PhoneNum = filter_input(INPUT_POST,'PhoneNum');
+        $JobDesc = filter_input(INPUT_POST,'JobDesc');
 
-        updateTeam($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc);
-        header('Location: view_teams.php');
-
-        //ADD TEAM WAS SUBMITTED IN FORM -> GRAB SUBMITTED VALUES AND PASS TO THE addTeam() METHOD!
+        updateCustomer($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc);
+        header('Location: adminDashboard.php');
     }elseif (isset($_POST['Add_team'])){
-        $action = filter_input(INPUT_POST, 'action');
-        $teamName = filter_input(INPUT_POST, 'team_name');
-        $division = filter_input(INPUT_POST, 'division');
+        $action = filter_input(INPUT_GET, 'action');
+        $Customer_ID = filter_input(INPUT_GET, 'Customer_ID');
+        $FirstName = filter_input(INPUT_POST,'FirstName');
+        $LastName =  filter_input(INPUT_POST,'LastName');
+        $ApptTime = filter_input(INPUT_POST,'ApptTime');
+        $Stat = filter_input(INPUT_POST,'Stat');
+        $Email = filter_input(INPUT_POST,'Email');
+        $PhoneNum = filter_input(INPUT_POST,'PhoneNum');
+        $JobDesc = filter_input(INPUT_POST,'JobDesc');
         
-        addTeam($teamName, $division);
-        header('Location: Model/admindDashboard.php');
+        addTeam($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc);
+        header('Location: adminDashboard.php');
     }
+
 
 ?>
 
@@ -82,24 +85,24 @@
     </style>
 
     <!-- ADD TEAM FORM -->
-    <h2><?= $action; ?> Appointment Info</h2>
+    <h2><?= $action; ?> Appointment</h2>
 
     <form name="client" method="post" action="editClient.php">
         
         <!--FORM-->
         <div class="wrapper">
-            <input type="hidden" name="team_id" value="<?= $Customer_ID; ?>" />
+            <input type="hidden" name="Customer_ID" value="<?= $Customer_ID; ?>" />
             <div class="label">
-                <label>Team Name:</label>
+                <label>First Name:</label>
             </div>
             <div>
-                <input type="text" name="team_name" value="<?= $FirstName; ?>" />
+                <input type="text" name="FirstName" value="<?= $FirstName; ?>" />
             </div>
             <div class="label">
-                <label>Divison:</label>
+                <label>Last Name:</label>
             </div>
             <div>
-                <input type="text" name="division" value="<?= $LastName; ?>" />
+                <input type="text" name="LastName" value="<?= $LastName; ?>" />
             </div>
 
             <div>
@@ -107,17 +110,13 @@
             </div>
             <div>
                 <!-- WE CAN USE OUR 'ACTION' VALUE FROM THE GET RESULT TO MANIPULATE THE FORM! -->
-                <input type="submit" name="<?= $action; ?>_team" value="<?= $action; ?> Team Information" />
+                <input type="submit" name="<?= $action; ?>_client" value="<?= $action; ?> Team Information" />
             </div>
            
         </div>
 
        
     </form>
-    <p>
-       
-    </p>
-
 
     </body>
 </html>
