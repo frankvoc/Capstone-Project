@@ -2,8 +2,6 @@
 
 //global $db originates from /db.php
 include (__DIR__ . '/db.php');
-// var_dump($db);
-// exit;
 function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }

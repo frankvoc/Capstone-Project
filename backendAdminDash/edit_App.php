@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL Teams</title>
-</head>
-<body>
-    
+
 
 <?php 
     ini_set('display_errors', 1);
@@ -75,6 +67,49 @@
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le couturier</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="edit.css"> 
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<main> 
+    <title>Edit Appoitment</title>
+</head>
+<body>
+<header> 
+          <img src="img\Le-Couturier-new 1.png" alt="logo"> 
+          <div id ="ltwo">
+            <a href="Services.php">
+              <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color:#152266">
+                  Our Services 
+                </button></a>
+                <a href="adminLogin.php">
+                <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+                  Sign In 
+                </button>
+                </a>
+                <a href="appointmentPage.php">
+                  <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+                    Appointments
+                  </button>
+                  </a>
+          </div>
+  
+</header>
+    
+
     <style type="text/css">
        .wrapper {
             display: grid;
@@ -94,8 +129,8 @@
     </style>
 
     <!-- ADD TEAM FORM -->
-    <div class="col-sm-offset-1 col-sm-10"><p><a href="./adminDashboard.php">View Appointmenta</a></p></div>
-    <form name="customer" method="post" action="edit_App.php">
+    <button class="col-sm-offset-1 col-sm-10"><p></p></div>
+    <form id="form" name="customer" method="post" action="edit_App.php">
         
         <!--FORM-->
         <div class="wrapper">
@@ -155,17 +190,18 @@
 
             <div>
                 &nbsp;
-            </div>
-            <input type="submit" name="Update_Customer" value="update" /> 
-           
-        </div>
+            </div>          
+        </div>   
+    <div id=buttons> 
 
-       
+        <a href="adminDashboard.php"><button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266 ">Back</a> 
+        <button type="submit" name="Update_Customer" value="update" class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+                  Update Appointment
+        </button>
+    </div> 
     </form>
-    <p>
-       
-    </p>
-
 
     </body>
+
+    </main>
 </html>
