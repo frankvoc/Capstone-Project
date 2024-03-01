@@ -155,6 +155,31 @@
 
      </div>
      <?php
+
+if(isset($_POST['deleteCustomer'])){
+    $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
+    $get = getCustomer($Customer_ID);
+
+    if($get && deleteCustomer($Customer_ID)){
+        // Only proceed if $get is not null/empty
+        $mailto = $get['Email'] ?? ''; 
+         // Use null coalescing operator as fallback
+        $firstName = $get['FirstName'] ?? 'Customer'; // Fallback to a generic name
+        
+        if(!empty($mailto)) { // Proceed only if $mailto is not empty
+            $subject = 'Appointment Cancellation';
+            $body = "Hello " . $firstName . ",\n\nYour appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.\n\nBest regards,\nYour Company Name";
+            $headers = "From: wingo6590@gmail.com";
+            if(mail($mailto, $subject, $body, $headers)){
+                echo "Email has been sent";
+            } else{
+                echo "Email has not been sent";
+            }
+        } else {
+            echo "No email address found for the customer.";
+        }
+    }
+}
  
     if (isset($_POST['toggleCustomerStatus'])) {
         $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
@@ -183,6 +208,7 @@
         $LastName = '';
         $customers = getCustomers(); // Call without parameters to get all customers
     }
+    var_dump($subject);
      
     ?>
 
@@ -298,7 +324,7 @@
                     </td>
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->
-                    <form action='adminDashboard.php' method='post'>
+                    <form action='adminDashboard.php' method='post' onsubmit="return confirmDelete(this)">
                         <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID'];?>"/>
                         
                         <button type="submit" name="deleteCustomer" value="Delete" style="border: none; background: none;">
@@ -311,5 +337,13 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <script>
+        function confirmDelete(form) {
+
+        const confirmation = confirm("Are you sure you want to delete this person?");
+        
+        return confirmation;
+}
+</script>
 </body>
 </html>
