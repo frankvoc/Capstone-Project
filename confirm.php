@@ -1,3 +1,21 @@
+<?php
+function isPostRequest(){
+  return( filter_input(INPUT_SERVER, 'REQUEST_METHOD')=== 'POST');
+}
+// include __DIR__ . '/model/db.php';
+// include __DIR__ . '/controllers/processAppointment.php';
+if(isPostRequest()){
+  $fistName = filter_input(INPUT_POST,'firstName');
+  $lastName = filter_input(INPUT_POST,'lastName');
+  $email = filter_input(INPUT_POST,'email');
+  $phone = filter_input(INPUT_POST,'phone');
+  $jobDescription = filter_input(INPUT_POST,'jobDescription');
+  $selectedDate = filter_input(INPUT_POST,'selectedDate');
+  $selectedTimeSlot = filter_input(INPUT_POST,'selectedTimeSlot');
+  $selectedDate = date('Y-m-d H:i:s');
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

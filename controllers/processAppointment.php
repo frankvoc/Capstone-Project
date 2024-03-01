@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include '../model/db.php';
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
     //AJAX request
