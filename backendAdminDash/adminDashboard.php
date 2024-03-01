@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     include (__DIR__ . '/Model/model_clients.php');
     session_start();
 
@@ -6,6 +7,12 @@
     if(isset($_POST['deleteCustomer'])){
         $id = filter_input(INPUT_POST, 'Customer_ID');
         deleteCustomer($id);
+    }
+
+    if (isset($_POST['toggleCustomerStatus'])) {
+        // Toggle status logic here
+        header('Location: adminDashboard.php'); // Redirect
+        exit();
     }
 
     $customers = getCustomers();
@@ -58,6 +65,7 @@
       display: flex;
       align-items: center;
     }
+  
 
     .label 
     {
@@ -120,14 +128,13 @@
 </head>
 <body style="background-color: #F5EAEB;">
     <div class="min-h-screen flex flex-col items-center justify-center">
-        <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques"style="background-color:#C1373C ;">
+        <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques" style="background-color:#C1373C;">
             <div class="flex justify-between items-center w-full px-4">
                 <div class="text-lg font-semibold text-center flex-1">Admin Dashboard</div>
                 <a href="../adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
             </div>
         </header>
-    <div class="flex min-h-screen items-center justify-center">
-    <div class="flex-1 flex justify-center">
+        <div class="content-container flex flex-col items-center justify-center w-full">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
         <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" href="#"></a>
@@ -135,7 +142,7 @@
     </ul>
     </div>
 
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="w-full px-4 py-8">
      
                 
         
@@ -145,20 +152,37 @@
         <a href="adminDashboard.php" class="btn btn-info" style="margin-right: 10px;">View Customers</a>
         
         <a href="addCustomer.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
+
      </div>
      <?php
  
+    if (isset($_POST['toggleCustomerStatus'])) {
+        $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
+        $currentStatus = getCustomerStatus($Customer_ID); 
+        // Toggle the status
+        $newStatus = ($currentStatus == '') ? 'In progress' : 'Completed';
+        // Assume a function exists to update the status
+        updateCustomerStatus($Customer_ID, $newStatus);
+        // Refresh the page to show the updated status
+        header('Location: adminDashboard.php');
+        exit();
+    }
 
     if (isset($_POST['search'])) {
         $FirstName = filter_input(INPUT_POST, 'FirstName');
         $LastName = filter_input(INPUT_POST, 'LastName');
-    }else{
+        $TimeFrame = filter_input(INPUT_POST, 'TimeFrame');
+
+        if ($TimeFrame === '') {
+            $customers = searchCustomer($FirstName, $LastName);
+        } else {
+            $customers = getCustomers($TimeFrame);
+        }
+    } else {
         $FirstName = '';
         $LastName = '';
+        $customers = getCustomers(); // Call without parameters to get all customers
     }
-
-
-        $customers = searchCustomer($FirstName, $LastName);
      
     ?>
 
@@ -190,6 +214,22 @@
             <div>
                 &nbsp;
             </div>
+
+            <!-- Time Frame Filter -->
+            <div class="label"><label>Time Frame:</label></div>
+            <div>
+                <select name="TimeFrame">
+                    <option value="">Any Time</option>
+                    <option value="today">Today</option>
+                    <option value="thisWeek">This Week</option>
+                    <option value="thisMonth">This Month</option>
+                </select>
+            </div>
+
+            <div>
+                &nbsp;
+            </div>
+
             <div>
                 <input type="submit" name="search" value="Search" />
             </div>
@@ -215,6 +255,8 @@
                 <th></th>
                 <th>Phone Number</th>
                 <th></th>
+                <th>Email</th>
+                <th></th>
                 <th>Job Desc</th>
                 <th></th>
                 <th></th>
@@ -237,13 +279,22 @@
                     <th></th>
                     <td><?php echo $c['PhoneNum']; ?></td>
                     <th></th>
+                    <td><?php echo $c['Email']; ?></td>
+                    <th></th>
                     <td><?php echo $c['JobDesc']; ?></td>
                     <th></th>
-                    <th></th>
+                    
                     <td>
-                        
- 
-                        <a href="edit_App.php?action=Update&Customer_ID=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                        <a href="editCustomer.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <!-- Toggle Button Form -->
+                        <form action='adminDashboard.php' method='post'>
+                            <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID']; ?>"/>
+                            <button type="submit" name="toggleCustomerStatus" class="btn btn-default">
+                                <i class="fas fa-toggle-on" style="font-size:24px; color:<?= $c['Stat'] == 'In Progress', 'Completed' ? 'green' : 'grey'; ?>"></i>
+                            </button>
+                        </form>
                     </td>
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->

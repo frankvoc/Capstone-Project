@@ -8,25 +8,54 @@ function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }
 
-function getCustomers() {
-    //grab $db object = 
-    //needs global scope since object is coming from outside the function
+function getCustomers($timeFrame = null) {
     global $db;
-
-    //initialize return dataset
     $results = [];
-
-    //prepare our SQL statement
-    $stmt = $db->prepare("SELECT Customer_ID, FirstName, LastName, ApptTime, Stat, Email, PhoneNum, JobDesc FROM customers ORDER BY LastName ASC");
-
-    //if our SQL statement reutrns results, populate our results array
-    if($stmt->execute() && $stmt->rowCount() > 0) {
+    
+    // Base SQL statement
+    $sql = "SELECT Customer_ID, FirstName, LastName, ApptTime, Stat, Email, PhoneNum, JobDesc FROM customers";
+    
+    // Determine the time frame condition
+    $dateCondition = "";
+    switch ($timeFrame) {
+        case 'today':
+            $dateCondition = " WHERE DATE(ApptTime) = CURDATE()";
+            break;
+        case 'thisWeek':
+            $dateCondition = " WHERE YEARWEEK(ApptTime, 1) = YEARWEEK(CURDATE(), 1)";
+            break;
+        case 'thisMonth':
+            $dateCondition = " WHERE MONTH(ApptTime) = MONTH(CURDATE()) AND YEAR(ApptTime) = YEAR(CURDATE())";
+            break;
+    }
+    
+    $sql .= $dateCondition . " ORDER BY Customer_ID ASC";
+    
+    $stmt = $db->prepare($sql);
+    
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    return $results;
+}
 
-    //return our results
-    return ($results);
+function getCustomerStatus($Customer_ID) {
+    global $db;
+    $stmt = $db->prepare("SELECT Stat FROM customers WHERE Customer_ID = :Customer_ID");
+    $stmt->execute([':Customer_ID' => $Customer_ID]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result ? $result['Stat'] : null; // Return the status or null if not found
+}
 
+
+function updateCustomerStatus($Customer_ID, $newStatus) {
+    global $db;
+    $stmt = $db->prepare("UPDATE customers SET Stat = :Stat WHERE Customer_ID = :Customer_ID");
+    return $stmt->execute([
+        ':Stat' => $newStatus,
+        ':Customer_ID' => $Customer_ID
+    ]);
 }
 
 function addCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
