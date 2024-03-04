@@ -6,6 +6,25 @@ include (__DIR__ . '/db.php');
 // exit;
 
 
+
+function loginAdmin($email, $password) {
+    global $db; 
+    $result = [];
+
+    // SQL statement to fetch the admin user
+    $stmt = $db->prepare("SELECT * FROM adminlogin WHERE adminemail = :email");
+    $stmt->bindValue(['email' => $email]);
+    $admin = $stmt->fetch();
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                   
+    }
+    
+    return ($result);
+}
+
+
 function getCustomers($timeFrame = null) {
     global $db;
     $results = [];
@@ -38,23 +57,6 @@ function getCustomers($timeFrame = null) {
     return $results;
 }
 
-function getCustomerStatus($Customer_ID) {
-    global $db;
-    $stmt = $db->prepare("SELECT Stat FROM customers WHERE Customer_ID = :Customer_ID");
-    $stmt->execute([':Customer_ID' => $Customer_ID]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result ? $result['Stat'] : null; // Return the status or null if not found
-}
-
-
-function updateCustomerStatus($Customer_ID, $newStatus) {
-    global $db;
-    $stmt = $db->prepare("UPDATE customers SET Stat = :Stat WHERE Customer_ID = :Customer_ID");
-    return $stmt->execute([
-        ':Stat' => $newStatus,
-        ':Customer_ID' => $Customer_ID
-    ]);
-}
 
 function addCustomer ($FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 

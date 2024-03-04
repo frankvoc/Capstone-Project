@@ -9,12 +9,6 @@
         deleteCustomer($id);
     }
 
-    if (isset($_POST['toggleCustomerStatus'])) {
-        // Toggle status logic here
-        header('Location: adminDashboard.php'); // Redirect
-        exit();
-    }
-
     $customers = getCustomers();
 ?>
 
@@ -168,7 +162,7 @@ if(isset($_POST['deleteCustomer'])){
         
         if(!empty($mailto)) { // Proceed only if $mailto is not empty
             $subject = 'Appointment Cancellation';
-            $body = "Hello " . $firstName . ",\n\nYour appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.\n\nBest regards,\nYour Company Name";
+            $body = "Hello " . $firstName . ",\n\nYour appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.\n\nBest regards,\nLe Couturier ";
             $headers = "From: wingo6590@gmail.com";
             if(mail($mailto, $subject, $body, $headers)){
                 echo "Email has been sent";
@@ -208,7 +202,7 @@ if(isset($_POST['deleteCustomer'])){
         $LastName = '';
         $customers = getCustomers(); // Call without parameters to get all customers
     }
-    var_dump($subject);
+    // var_dump($subject);
      
     ?>
 
@@ -313,15 +307,7 @@ if(isset($_POST['deleteCustomer'])){
                     <td>
                         <a href="editCustomer.php?id=<?php echo $c['Customer_ID']; ?>" class="btn btn-primary">Edit</a>
                     </td>
-                    <td>
-                        <!-- Toggle Button Form -->
-                        <form action='adminDashboard.php' method='post'>
-                            <input type="hidden" name="Customer_ID" value="<?= $c['Customer_ID']; ?>"/>
-                            <button type="submit" name="toggleCustomerStatus" class="btn btn-default">
-                                <i class="fas fa-toggle-on" style="font-size:24px; color:<?= $c['Stat'] == 'In Progress', 'Completed' ? 'green' : 'grey'; ?>"></i>
-                            </button>
-                        </form>
-                    </td>
+                    
                     <td>
                     <!-- FORM FOR DELETE FUNCTIONALITY -->
                     <form action='adminDashboard.php' method='post' onsubmit="return confirmDelete(this)">
