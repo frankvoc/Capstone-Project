@@ -70,8 +70,8 @@ if(isPostRequest()){
         <p>Time Selected: <span id="selectedTimeSlot"></span></p>
 </div>
 <div class="flex justify-between">
-          <button type="button" id="editButton" class="text-white bg-green-500 p-2 rounded hover:bg-green-600">Edit Details</button>
-          <button type="button" id="confirmButton" class="text-white bg-green-500 p-2 rounded hover:bg-green-600">Confirm Booking</button>
+          <button type="button" id="editButton" class="text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Edit Details</button>
+          <button type="button" id="confirmButton" class="text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Confirm Booking</button>
 </div>
 </body>
 </html>

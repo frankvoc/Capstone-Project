@@ -119,7 +119,7 @@
           <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1" required>
         </div>
         <br>
-        <button type="button" id="next1" class="form-nav w-full text-white bg-green-500 text-2xl p-2 rounded hover:bg-green-600">Next</button>
+        <button type="button" id="next1" class="form-nav w-full text-white bg-blue-600 text-2xl p-2 rounded hover:bg-blue-700">Next</button>
       </div>
       <!--other steps-->
       <div id="step2" class="step hidden" data-step="2">
@@ -129,8 +129,8 @@
           <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border border-gray-300 rounded mt-1" rows="4" required></textarea>
         </div>
         <div class="flex justify-between">
-          <button type="button" id="back2" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Back</button>
-          <button type="button" id="next2" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Next</button>
+          <button type="button" id="back2" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue700-">Back</button>
+          <button type="button" id="next2" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Next</button>
         </div>
       </div>
       <div id="step3" class="step hidden" data-step="3">
@@ -161,8 +161,8 @@
           <!--dynamic generated time slots here-->
         </div>
         <div class="flex justify-between">
-          <button type="button" id="back3" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Back</button>
-          <button type="button" id="next3" class="form-nav text-white bg-green-500 p-2 rounded hover:bg-green-600">Next</button>
+          <button type="button" id="back3" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Back</button>
+          <button type="button" id="next3" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Next</button>
         </div>
     </form>
 <script>
