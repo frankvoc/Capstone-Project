@@ -101,12 +101,12 @@
         <h2 class="text-center text-4xl py-6 italiana" style="color: #99382C;">Provide Contact</h2>
         <div>
           <label for="firstName" class="text-sm font-medium text-gray-700">First Name</label>
-          <input type="text" id="firstName" name="firstName" class="w-full p-2 border border-gray-300 rounded mt-1" required>
+          <input type="text" id="firstName" name="firstName" class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Tom"required>
         </div>
         <br>
         <div>
           <label for="lastName" class="text-sm font-medium text-gray-700">Last Name</label>
-          <input type="text" id="lastName" name="lastName" class="w-full p-2 border border-gray-300 rounded mt-1" required>
+          <input type="text" id="lastName" name="lastName" class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Smith"required>
         </div>
         <br>
         <div>
@@ -116,7 +116,7 @@
         <br>
         <div>
           <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
-          <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1" required>
+          <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="123-456-7890"required>
         </div>
         <br>
         <button type="button" id="next1" class="form-nav w-full text-white bg-blue-600 text-2xl p-2 rounded hover:bg-blue-700">Next</button>
@@ -126,7 +126,7 @@
       <div>
           <h2 class="text-center text-3xl py-6 italiana" style="color: #99382C;">Provide a Job Description</h2>
           <label for="jobDescription" class="text-sm font-medium text-gray-700"></label>
-          <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border border-gray-300 rounded mt-1" rows="4" required></textarea>
+          <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border border-gray-300 rounded mt-1" rows="4" placeholder="Please provide a description of the service you need..."required></textarea>
         </div>
         <div class="flex justify-between">
           <button type="button" id="back2" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue700-">Back</button>
