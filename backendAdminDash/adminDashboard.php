@@ -150,42 +150,61 @@
      </div>
      <?php
 
-if(isset($_POST['deleteCustomer'])){
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/Exception.php'; 
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
+if (isset($_POST['deleteCustomer'])) {
     $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
     $get = getCustomer($Customer_ID);
 
-    if($get && deleteCustomer($Customer_ID)){
-        // Only proceed if $get is not null/empty
-        $mailto = $get['Email'] ?? ''; 
-         // Use null coalescing operator as fallback
-        $firstName = $get['FirstName'] ?? 'Customer'; // Fallback to a generic name
-        
-        if(!empty($mailto)) { // Proceed only if $mailto is not empty
-            $subject = 'Appointment Cancellation';
-            $body = "Hello " . $firstName . ",\n\nYour appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.\n\nBest regards,\nLe Couturier ";
-            $headers = "From: wingo6590@gmail.com";
-            if(mail($mailto, $subject, $body, $headers)){
-                echo "Email has been sent";
-            } else{
-                echo "Email has not been sent";
+    if ($get && deleteCustomer($Customer_ID)) {
+        $mailto = $get['Email'] ?? '';
+        $firstName = $get['FirstName'] ?? 'Customer';
+
+        if (!empty($mailto)) {
+            $mail = new PHPMailer(true);
+
+            try {
+                //Server settings
+                $mail->isSMTP();                                            // Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = 'wingo6590@gmail.com';              // SMTP username
+                $mail->Password   = 'awxdijtvtjrblpgt';                        // SMTP password
+                $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+                //Recipients
+                $mail->setFrom('wingo6590@gmail.com');
+                $mail->addAddress($_POST["Email"]);     // Add a recipient
+
+                // Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Appointment Cancellation';
+                $mail->Body    = "Hello " . $firstName . ",<br><br>Your appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.<br><br>Best regards,<br>Le Couturier";
+
+                $mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         } else {
             echo "No email address found for the customer.";
         }
     }
 }
- 
-    if (isset($_POST['toggleCustomerStatus'])) {
-        $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
-        $currentStatus = getCustomerStatus($Customer_ID); 
-        // Toggle the status
-        $newStatus = ($currentStatus == '') ? 'In progress' : 'Completed';
-        // Assume a function exists to update the status
-        updateCustomerStatus($Customer_ID, $newStatus);
-        // Refresh the page to show the updated status
-        header('Location: adminDashboard.php');
-        exit();
-    }
+
+
+if(isset($_POST['deleteCustomer'])){
+    $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
+    $get = getCustomer($Customer_ID);
+
+}
 
     if (isset($_POST['search'])) {
         $FirstName = filter_input(INPUT_POST, 'FirstName');
@@ -200,6 +219,7 @@ if(isset($_POST['deleteCustomer'])){
     } else {
         $FirstName = '';
         $LastName = '';
+        $TimeFrame = '';
         $customers = getCustomers(); // Call without parameters to get all customers
     }
     // var_dump($subject);
@@ -238,12 +258,12 @@ if(isset($_POST['deleteCustomer'])){
             <!-- Time Frame Filter -->
             <div class="label"><label>Time Frame:</label></div>
             <div>
-                <select name="TimeFrame">
-                    <option value="">Any Time</option>
-                    <option value="today">Today</option>
-                    <option value="thisWeek">This Week</option>
-                    <option value="thisMonth">This Month</option>
-                </select>
+            <select name="TimeFrame">
+                <option value="">Any Time</option>
+                <option value="today" <?php if ($TimeFrame == "today") echo "selected"; ?>>Today</option>
+                <option value="thisWeek" <?php if ($TimeFrame == "thisWeek") echo "selected"; ?>>This Week</option>
+                <option value="thisMonth" <?php if ($TimeFrame == "thisMonth") echo "selected"; ?>>This Month</option>
+            </select>
             </div>
 
             <div>
@@ -278,7 +298,6 @@ if(isset($_POST['deleteCustomer'])){
                 <th>Email</th>
                 <th></th>
                 <th>Job Desc</th>
-                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
