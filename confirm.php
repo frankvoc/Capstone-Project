@@ -1,21 +1,3 @@
-<?php
-function isPostRequest(){
-  return( filter_input(INPUT_SERVER, 'REQUEST_METHOD')=== 'POST');
-}
-// include __DIR__ . '/model/db.php';
-// include __DIR__ . '/controllers/processAppointment.php';
-if(isPostRequest()){
-  $fistName = filter_input(INPUT_POST,'firstName');
-  $lastName = filter_input(INPUT_POST,'lastName');
-  $email = filter_input(INPUT_POST,'email');
-  $phone = filter_input(INPUT_POST,'phone');
-  $jobDescription = filter_input(INPUT_POST,'jobDescription');
-  $selectedDate = filter_input(INPUT_POST,'selectedDate');
-  $selectedTimeSlot = filter_input(INPUT_POST,'selectedTimeSlot');
-  $selectedDate = date('Y-m-d H:i:s');
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +28,14 @@ if(isPostRequest()){
     .larger-text{
       font-size:2.5rem;
     }
+    #bookingSuccess {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    }
+
+    #bookingSuccess:not(.hidden) {
+    opacity: 1;
+    }
     </style>
     </head>
 <body class="bg-red-100">
@@ -59,8 +49,16 @@ if(isPostRequest()){
     <div class="container mx-auto p-4">
   <h2 class="text-center text-6xl py-6 italiana" style="color: #99382C;">Confirm Appointment</h2>
   <h2 class="text-center text-4xl py-6 italiana" style="color: #99382C;">Your Details</h2>
+  <div id="bookingSuccess" class="hidden">
+    <div class="text-center">
+        <svg class="mx-auto h-24 w-24 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <p class="text-2xl font-semibold mt-4">Appointment Booked!</p>
+    </div>
+</div>
   <div class="max-w-md mx-auto p-8 rounded-lg">
-    <div id="confirmationDetails" class="text-lg">
+    <div id="confirmationDetails" class="text-lg text-center" >
         <p>First Name: <span id="firstName"></span></p>
         <p>Last Name: <span id="lastName"></span></p>
         <p>Email: <span id="email"></span></p>
@@ -73,25 +71,59 @@ if(isPostRequest()){
           <button type="button" id="editButton" class="text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Edit Details</button>
           <button type="button" id="confirmButton" class="text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Confirm Booking</button>
 </div>
+<form id="bookingForm" action="submitBooking.php" method="post" style="display:none;">
+    <input type="hidden" name="firstName" id="formFirstName">
+    <input type="hidden" name="lastName" id="formLastName">
+    <input type="hidden" name="email" id="formEmail">
+    <input type="hidden" name="phone" id="formPhone">
+    <input type="hidden" name="jobDescription" id="formJobDescription">
+    <input type="hidden" name="selectedDate" id="formSelectedDate">
+    <input type="hidden" name="selectedTimeSlot" id="formSelectedTimeSlot">
+  </form>
 </body>
 </html>
 <script>
-    document.addEventListener('DOMContentLoaded',()=>{
-        document.getElementById('firstName').textContent = sessionStorage.getItem('firstName') || 'Not Provided';
-        document.getElementById('lastName').textContent = sessionStorage.getItem('lastName') || ' Not Provided';
-        document.getElementById('email').textContent = sessionStorage.getItem('email') || 'Not Provided';
-        document.getElementById('phone').textContent = sessionStorage.getItem('phone') || 'Not Provided';
-        document.getElementById('jobDescription').textContent = sessionStorage.getItem('jobDescription') || 'Not Provided';
-        document.getElementById('selectedDate').textContent = sessionStorage.getItem('selectedDate') || 'Not Provided';
-        document.getElementById('selectedTimeSlot').textContent = sessionStorage.getItem('selectedTimeSlot') || 'Not Provided'
-        document.getElementById('editButton').addEventListener('click',function(){
-            window.location.href='appointmentScheduler.php';
+document.addEventListener('DOMContentLoaded', () => {
+    //populate fields from sessionStorage appointmentScheduler
+    document.getElementById('firstName').textContent = sessionStorage.getItem('firstName') || 'Not Provided';
+    document.getElementById('lastName').textContent = sessionStorage.getItem('lastName') || ' Not Provided';
+    document.getElementById('email').textContent = sessionStorage.getItem('email') || 'Not Provided';
+    document.getElementById('phone').textContent = sessionStorage.getItem('phone') || 'Not Provided';
+    document.getElementById('jobDescription').textContent = sessionStorage.getItem('jobDescription') || 'Not Provided';
+    document.getElementById('selectedDate').textContent = sessionStorage.getItem('selectedDate') || 'Not Provided';
+    document.getElementById('selectedTimeSlot').textContent = sessionStorage.getItem('selectedTimeSlot') || 'Not Provided';
+    //AJAX submission for confirmButton
+    document.getElementById('confirmButton').addEventListener('click', function(event) {
+        event.preventDefault(); //prevent default form submission (not navigating away, doing all on browser)
+        const formData = new FormData();
+        formData.append('firstName', sessionStorage.getItem('firstName') || '');
+        formData.append('lastName', sessionStorage.getItem('lastName') || '');
+        formData.append('email', sessionStorage.getItem('email') || '');
+        formData.append('phone', sessionStorage.getItem('phone') || '');
+        formData.append('jobDescription', sessionStorage.getItem('jobDescription') || '');
+        formData.append('selectedDate', sessionStorage.getItem('selectedDate') || '');
+        formData.append('selectedTimeSlot', sessionStorage.getItem('selectedTimeSlot') || '');
+        fetch('controllers/submitBooking.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('editButton').style.display = 'none';
+            document.getElementById('confirmButton').style.display = 'none';
+            document.getElementById('bookingSuccess').classList.remove('hidden');
+            sessionStorage.clear(); //clears session storage
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-        document.getElementById('confirmButton').addEventListener('click',function(){
-            alert('Confirm');
-            sessionStorage.clear();
+    });
+    //edit redirects back to 1st part of scheduler
+    document.getElementById('editButton').addEventListener('click', function() {
+        window.location.href = 'appointmentScheduler.php';
     });
 });
-    </script>
+</script>
+
 
             

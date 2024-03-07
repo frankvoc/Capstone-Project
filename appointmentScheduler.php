@@ -49,7 +49,10 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
-
+  .selected-date {
+    background-color: #4CAF50;
+    color: white;
+  }
   .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -77,6 +80,22 @@
     background-color: #C1373C;
     color: white;
   }
+  input.input-error {
+    border: 2px solid red !important;
+  }
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+  }
+  .disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+.greyed-out {
+    color: #ccc;
+    pointer-events: none;
+}
   </style>
 </head>
 <body class="bg-red-100">
@@ -99,7 +118,7 @@
     <form id="appointmentForm" class="space-y-6">
       <div id="step1" class="step" data-step="1">
         <h2 class="text-center text-4xl py-6 italiana" style="color: #99382C;">Provide Contact</h2>
-        <div>
+        <div><!--Contact Part-->
           <label for="firstName" class="text-sm font-medium text-gray-700">First Name</label>
           <input type="text" id="firstName" name="firstName" class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="Tom"required>
         </div>
@@ -118,28 +137,33 @@
           <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
           <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded mt-1" placeholder="123-456-7890"required>
         </div>
-        <br>
+        <br><!--Next button-->
         <button type="button" id="next1" class="form-nav w-full text-white bg-blue-600 text-2xl p-2 rounded hover:bg-blue-700">Next</button>
       </div>
       <!--other steps-->
       <div id="step2" class="step hidden" data-step="2">
-      <div>
+      <div><!--Job description-->
           <h2 class="text-center text-3xl py-6 italiana" style="color: #99382C;">Provide a Job Description</h2>
           <label for="jobDescription" class="text-sm font-medium text-gray-700"></label>
           <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border border-gray-300 rounded mt-1" rows="4" placeholder="Please provide a description of the service you need..."required></textarea>
         </div>
         <div class="flex justify-between">
+          <!--Back button back to step 1-->
           <button type="button" id="back2" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue700-">Back</button>
+          <!--Next button to step 3-->
           <button type="button" id="next2" class="form-nav text-white bg-blue-600 p-2 rounded hover:bg-blue-700">Next</button>
         </div>
       </div>
       <div id="step3" class="step hidden" data-step="3">
+        <!--Appointment date/time-->
       <h2 class="text-center text-3xl py-6 italiana" style="color: #99382C;">Schedule a Date and Time</h2>
         <!--calendar view -->
         <div class="calendar my-5">
           <div class="calendar-header flex justify-between items-center">
+            <!--Navigate previous months-->
             <button type="button" id="prevMonth" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Prev</button>
             <span>Month Year</span> <!--dynamic generated month header-->
+            <!--Navigate next months-->
             <button type="button" id="nextMonth" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
           </div>
           <div class="grid grid-cols-7 gap-1 text-center text-xs py-2">
@@ -200,117 +224,157 @@
     sessionStorage.setItem('selectedTimeSlot',selectedTimeSlot);
        window.location.href = 'confirm.php';
 });
-  const form = document.getElementById('appointmentForm');
-  const steps = form.querySelectorAll('.step');
-  let currentStep = 1;
-  document.getElementById('appointmentForm').addEventListener('click', function(e) {
-    if (e.target.matches('.form-nav')) {
-        const isNext = e.target.id.includes('next');
-        const targetStep = isNext ? currentStep + 1 : currentStep - 1;
-        console.log("current step", currentStep);
-        console.log("target step", targetStep);
-        //force to show details when moving from 3-->4
-        if(currentStep === 3 && isNext){
-            updateConfirmationScreen();
-            console.log(confirmationDetails)
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('appointmentForm');
+    const steps = form.querySelectorAll('.step');
+    let currentStep = 1;
+    function validateCurrentStep() {
+    document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+    document.querySelectorAll('.error-message').forEach(el => el.remove());
+    let isValid = true;
+    //show errors at each input
+    function showError(inputId, message) {
+        isValid = false;
+        const input = document.getElementById(inputId);
+        input.classList.add('input-error');
+        //creating div to hold error
+        const errorDiv = document.createElement('div');
+        errorDiv.textContent = message;
+        errorDiv.className = 'error-message';
+        input.insertAdjacentElement('afterend', errorDiv);
+    }
+    //Validation
+    //cannot be null
+    const firstName = document.getElementById('firstName').value.trim();
+    if (firstName === '') {
+        showError('firstName', "First Name is required.");
+    }
+    //cannot be null
+    const lastName = document.getElementById('lastName').value.trim();
+    if (lastName === '') {
+        showError('lastName', "Last Name is required.");
+    }
+    //email regex must contain @ and .
+    const email = document.getElementById('email').value.trim();
+    if (email === '' || !/^\S+@\S+\.\S+$/.test(email)) {
+        showError('email', "A valid Email is required.");
+    }
+    //phone validation ONLY accepts 10 #s and () or -s
+    const phone = document.getElementById('phone').value.trim();
+    if (phone === '' || !/^[\d\s()+-]+$/.test(phone)) {
+    showError('phone', "A valid Phone Number is required with the correct format.");
+    } else {
+        //make a new variable that removes the () -s and stores as just numbers
+        const digitsOnly = phone.replace(/\D/g, ''); //remove the () or -s
+        if (digitsOnly.length !== 10) {//if not == 10 = error
+            showError('phone', "Phone Number must contain exactly 10 digits.");
         }
-        if (isNext) {
-            const inputs = steps[currentStep - 1].querySelectorAll('input, textarea');
-            for (let input of inputs) {
-                if (!input.value.trim()) {
-                    alert('Please fill in all the fields.');
-                    return; //stopping the function if fields are empty
-                }
+    }
+    return isValid;
+}
+    //imporved step logic
+    document.getElementById('appointmentForm').addEventListener('click', function(e) {
+        if (e.target.matches('.form-nav')) {
+            e.preventDefault(); //prevent default action
+            const isNext = e.target.id.includes('next');
+            //using validateCurrentStep
+            if (isNext && !validateCurrentStep()) {
+                return; //if function does not pass stop the user from moving forward
+            }
+            const targetStep = isNext ? currentStep + 1 : currentStep - 1;
+            //same logic previously used
+            steps[currentStep - 1].classList.add('hidden');
+            currentStep = targetStep;
+            if (currentStep >= 1 && currentStep <= steps.length) {
+                steps[currentStep - 1].classList.remove('hidden');
             }
         }
-        //hide the current step
-        steps[currentStep - 1].classList.add('hidden');
-        //used for back --> next navigation
-        currentStep = targetStep;
-        //show target step if within bounds
-        if (currentStep >= 1 && currentStep <= steps.length) {
-            steps[currentStep - 1].classList.remove('hidden');
-        } else {
-            console.error("not within bounds:", currentStep);
-        }
-        //debug for step after next click + classlist
-        console.log("currentstep" + currentStep, steps[currentStep - 1].classList);
-    }
+    });
 });
   //Get elements for displaying the calendar and its header
-        const calendarGrid = document.querySelector('.calendar-grid');
-        const calendarHeader = document.querySelector('.calendar-header span');
-        //Current date information
-        let currentDate = new Date();
-        let currentMonth = currentDate.getMonth();
-        let currentYear = currentDate.getFullYear();
-        let selectedDate = '';
-        let selectedTimeSlot = '';
-        function updateCalendarHeader(month, year) {
-          const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
-          calendarHeader.textContent = `${monthName} ${year}`;
-        }
-          function generateCalendar(month, year) {
-            const firstDay = new Date(year, month).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-              //Clear previous calendar
-              calendarGrid.innerHTML = '';
-              //Dynamically set the header based on currentMonth and currentYear
-              const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
-              calendarHeader.textContent = `${monthName} ${year}`;
-              //Generate days for previous months last few days
-              for (let i = 0; i < firstDay; i++) {
-                  const cell = document.createElement('div');
-                  cell.classList.add('calendar-day', 'empty');
-                  calendarGrid.appendChild(cell);
-              }
-              //Generate days for the current month
-              for (let i = 1; i <= daysInMonth; i++) {
-                  const cell = document.createElement('div');
-                  cell.classList.add('calendar-day');
-                  cell.textContent = i;
-                  const dayDate = new Date(year,month, i);
-                  if(dayDate.getDay()===0){
-                    cell.classList.add('bg-gray-200','text-gray-600');
-                    cell.classList.remove('cursor-pointer');
-                  }
-                  else{
-                  cell.addEventListener('click', function() {
-                      document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => {
-                          selectedDay.classList.remove('selected');
-                      });
-                      cell.classList.add('selected');
-                      selectedDate = `${year}-${month + 1}-${cell.textContent.padStart(2, '0')}`;
-                      // Optionally, load available time slots for this date here
-                      displayAvailableTimeSlots();
-                  });
-                }
-                  calendarGrid.appendChild(cell);
-              }
-          }
-          function displayAvailableTimeSlots() {
-            const timeSlotsContainer = document.getElementById('timeSlots');
-            timeSlotsContainer.innerHTML = '';
-            //available time slots
-            const timeSlots = ['9:30', '12:30', '2:30'];
-            //create and show time slots
-            timeSlots.forEach(time => {
+const calendarGrid = document.querySelector('.calendar-grid');
+const calendarHeader = document.querySelector('.calendar-header span');
+//Current date information
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+let selectedDate = '';
+let selectedTimeSlot = '';
+function updateCalendarHeader(month, year) {
+  const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
+  calendarHeader.textContent = `${monthName} ${year}`;
+  }
+  function generateCalendar(month, year) {
+    const calendarGrid = document.querySelector('.calendar-grid');
+    calendarGrid.innerHTML = '';
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    //find first day of the month
+    const firstDay = new Date(year, month).getDay();
+    //total days in month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    //update header based on prev->next
+    updateCalendarHeader(month, year); // Update the calendar header
+    //add empty divs to hold dates
+    for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.classList.add('calendar-day', 'empty');
+      calendarGrid.appendChild(emptyCell);
+    }
+    //populate with date calendars
+    for (let day = 1; day <= daysInMonth; day++) {
+      const cell = document.createElement('div');
+      cell.classList.add('calendar-day');
+      cell.textContent = day;
+      const dayDate = new Date(year, month, day);
+      //normalize todays date so we can make it max selectable
+      dayDate.setHours(0, 0, 0, 0);
+      //check if today is sunday
+      if (dayDate.getDay() === 0 || dayDate < today) {
+        //if it is then give it .disabled tag
+        cell.classList.add('bg-gray-200', 'text-gray-600', 'disabled');
+      } else {
+        cell.addEventListener('click', function() {
+          const dayDate = new Date(year, month, day); // Ensure this creates a valid Date object
+          displayAvailableTimeSlots(dayDate); // Pass this Date object to the function
+          document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => {
+            selectedDay.classList.remove('selected');
+          });
+          cell.classList.add('selected');
+          selectedDate = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`;
+          //display time slots
+          displayAvailableTimeSlots();
+        });
+      }
+      calendarGrid.appendChild(cell);
+    }
+  }
+  function displayAvailableTimeSlots(selectedDate) {
+    const timeSlotsContainer = document.getElementById('timeSlots');
+    timeSlotsContainer.innerHTML = '';
+    //convert selectedDate to YYYY-MM-DD format for the query using php toISOString
+    const formattedDate = selectedDate.toISOString().split('T')[0];
+    //fetching booked times
+    fetch(`controllers/getBookedTimes.php?date=${formattedDate}`)
+        .then(response => response.json())
+        .then(bookedTimes => {
+          console.log(bookedTimes);
+            const availableTimeSlots = ['9:30', '12:30', '2:30'].filter(time => !bookedTimes.includes(time));
+            //displaying only active times
+            availableTimeSlots.forEach(time => {
                 const timeSlotDiv = document.createElement('div');
                 timeSlotDiv.classList.add('time-slot', 'cursor-pointer', 'rounded', 'text-center', 'bg-gray-300', 'hover:bg-gray-400', 'p-2', 'm-2');
                 timeSlotDiv.textContent = time;
                 timeSlotDiv.setAttribute('data-time', time);
                 timeSlotDiv.addEventListener('click', function() {
-                    //remove selected feature when navigating days
-                    document.querySelectorAll('.time-slot').forEach(slot => {
-                        slot.classList.remove('selected-time-slot');
-                    });
-                    //clicked time = selected
+                    document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected-time-slot'));
                     timeSlotDiv.classList.add('selected-time-slot');
                     selectedTimeSlot = time;
                 });
                 timeSlotsContainer.appendChild(timeSlotDiv);
             });
-        }
+        });
+}
         //generate the calendar
         generateCalendar(currentMonth, currentYear);
         document.getElementById('prevMonth').addEventListener('click', () => {
