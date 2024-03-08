@@ -68,7 +68,7 @@
   <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
     <div class="flex items-center">
       <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="home.html" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
+      <a href="home.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
     </div>
     <div class="flex items-center gap-4">
@@ -79,7 +79,7 @@
   </div>
   <!--Big image with text-->
   <div class="relative">
-    <img src="img/shutterstock_655460896.webp" class="w-full h-96 object-cover">
+    <img src="img/Appointment.jpg" class="w-full h-96 object-cover">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-25 flex items-center justify-center">
       <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
     </div>

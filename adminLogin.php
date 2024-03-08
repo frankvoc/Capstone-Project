@@ -45,7 +45,7 @@
       <?php if (isset($_GET['error'])): ?>
         <div class="text-red-500 mb-3">Invalid login credentials. Please try again.</div>
       <?php endif; ?>
-    <form class="space-y-4" action="processLogin.php" method="post">
+    <form class="space-y-4" action="controllers/processLogin.php" method="post">
         <div>
           <label for="email" class="sr-only">Email</label>
           <input type="email" id="email" name="email"class="w-full p-2 border border-gray-300 rounded" placeholder="Email" />
