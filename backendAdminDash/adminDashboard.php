@@ -125,7 +125,7 @@
         <header class="absolute top-0 w-full bg-red-600 text-white text-center py-4 text-lg font-semibold jacques" style="background-color:#C1373C;">
             <div class="flex justify-between items-center w-full px-4">
                 <div class="text-lg font-semibold text-center flex-1">Admin Dashboard</div>
-                <a href="../adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
+                <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
             </div>
         </header>
         <div class="content-container flex flex-col items-center justify-center w-full">
@@ -145,7 +145,7 @@
      <div class="links-container" style="margin-bottom: 20px;">
         <a href="adminDashboard.php" class="btn btn-info" style="margin-right: 10px;">View Customers</a>
         
-        <a href="addCustomer.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
+        <a href="appointmentScheduler.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
 
      </div>
      <?php
