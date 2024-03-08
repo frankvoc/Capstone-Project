@@ -314,7 +314,7 @@ if(isset($_POST['deleteCustomer'])){
                     <th></th>
                     <td><?php echo $c['ApptTime']; ?></td>
                     <th></th>
-                    <td><?php echo $c['Stat']; ?></td>
+                    <td><?php echo $c['Stat'] == 1 ? "In Progress" : "Completed";  ?></td>
                     <th></th>
                     <td><?php echo $c['PhoneNum']; ?></td>
                     <th></th>

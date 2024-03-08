@@ -328,17 +328,16 @@
       </div>
       
       <!-- Contact Form Section -->
-      <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
-          <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
-          <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
-            <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4">
-            <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4">
-            <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
-            <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
-          </form>
-      </div>
+  <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
+    <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
+    <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
+    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+        <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
+        <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4" required>
+        <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4" required>
+        <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4" required></textarea>
+        <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
+    </form>
   </div>
 </div>
 
@@ -429,6 +428,12 @@
       });
     });
   });
-  
+
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    var formValid = this.checkValidity();
+    if (!formValid) {
+        event.preventDefault();
+    }
+  });
   </script>
 </body>
