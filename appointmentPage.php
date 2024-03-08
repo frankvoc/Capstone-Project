@@ -79,7 +79,7 @@
   </div>
   <!--Big image with text-->
   <div class="relative">
-    <img src="img/shutterstock_655460896.webp" class="w-full h-96 object-cover">
+    <img src="img/Appointment.jpg" class="w-full h-96 object-cover">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-25 flex items-center justify-center">
       <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
     </div>
