@@ -66,15 +66,25 @@
 <body style="background-color: #F5EAEB;">
   <!--Top bar-->
   <div class="py-3 px-5 flex justify-between items-center" style="background-color:#C1373C ;">
-    <div class="flex items-center">
-      <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="home.html" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
-    </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <div class="bg-white border border-black py-2 px-4 rounded">
-      <a href="backendAdminDash/adminLogin.php" class="text-lg font-bold island-moments"style="color: #152266;">Sign In</a>
-    </div>
+      <div class="flex items-center">
+        <div class="Home">
+        <a href="home.html" class="text-xl font-bold" style="color: #152266;" >
+          <img src="img/Le-Couturier-new 1.png">
+        </a>
+        </div>
+      </div>
+    <div id ="ltwo">
+        <a href="backendAdminDash/adminLogin.php">
+          <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+            Sign In 
+          </button>
+        </a>
+        <a href="Services.php">
+        <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+            Services
+        </button>
+        </a>
+      </div>
     </div>
   </div>
   <!--Big image with text-->
@@ -107,17 +117,15 @@
 </div>
   <!--Contact form section-->
   <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
-          <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
-          <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
-            <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4">
-            <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4">
-            <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4"></textarea>
-            <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
-          </form>
-          <br>
-      </div>
+    <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
+    <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
+    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" onsubmit="return validateEmail()">
+        <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
+        <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4" required>
+        <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4" required>
+        <textarea name="message" id="message" placeholder="Write something..." class="block w-full p-3 mb-4" required></textarea>
+        <button type="submit" class="w-full text-white py-3 px-6 rounded" style="background-color: #D05B5F;">Submit</button>
+    </form>
   </div>
 </div>
   <!--Footer with address and map-->
@@ -166,7 +174,17 @@
           }
         });
       });
-        </script>
+
+      function validateEmail() {
+      var email = document.getElementById('email').value;
+      if (!email.includes('.com')) {
+        alert('Email must include .com');
+        return false; 
+      }
+        return true; 
+      }
+
+      </script>
       </body>
 </html>
 

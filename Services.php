@@ -236,7 +236,10 @@
         <h1>Header</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         </p>
-        <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
+        <a href="appointmentPage.php"  style="text-decoration: none;">
+           <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
+        </a>
+       
       </div>
       
       
@@ -264,7 +267,9 @@
       <h1>Header</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
       </p>
-      <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
+      <a href="appointmentPage.php"  style="text-decoration: none;">
+        <button type="button" class="italiana" style="background-color: white; color: #152266; padding: 10px 15px; border: none; cursor: pointer; margin-top: 20px; max-width: 300px; font-size: 24px;">Book an Appointment</button>
+      </a>
     </div>
   </div>
   <div class="Gallery">
