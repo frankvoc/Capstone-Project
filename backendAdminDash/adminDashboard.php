@@ -3,7 +3,7 @@
     include (__DIR__ . '/Model/model_clients.php');
     session_start();
 
-
+    
     if(isset($_POST['deleteCustomer'])){
         $id = filter_input(INPUT_POST, 'Customer_ID');
         deleteCustomer($id);
@@ -40,6 +40,7 @@
     {
       margin:0;
       padding:0;
+      padding-top: 50px;
       font-family: sans-serif;
     }
     h2
@@ -48,6 +49,9 @@
     }
     h1
     {
+      font-family: 'Jacques Francois', serif; 
+      font-size: 3.5rem !important;
+      padding-bottom: 15px;
       color:black;
     }
     label
@@ -99,7 +103,12 @@
         text-decoration: none; 
         border-radius: 5px; 
     }
-
+    .content-container {
+        width: 100%;
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 20px; 
+    }
 
      .island-moments {
       font-family: 'Island Moments', sans-serif;
@@ -116,9 +125,8 @@
     .dm-serif{
         font-family: 'DM Serif Display', serif; 
     }
-    
-    
   </style>
+
 </head>
 <body style="background-color: #F5EAEB;">
     <div class="min-h-screen flex flex-col items-center justify-center">
@@ -147,56 +155,15 @@
         
         <a href="appointmentScheduler.php" class="btn" style="background-color: #D05B5F; color: white;"> + Add Appointment</a>
 
-     </div>
-     <?php
+  
+    </div>
 
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'phpmailer/src/Exception.php'; 
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+<?php
 
 if (isset($_POST['deleteCustomer'])) {
     $Customer_ID = filter_input(INPUT_POST, 'Customer_ID');
     $get = getCustomer($Customer_ID);
 
-    if ($get && deleteCustomer($Customer_ID)) {
-        $mailto = $get['Email'] ?? '';
-        $firstName = $get['FirstName'] ?? 'Customer';
-
-        if (!empty($mailto)) {
-            $mail = new PHPMailer(true);
-
-            try {
-                //Server settings
-                $mail->isSMTP();                                            // Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'wingo6590@gmail.com';              // SMTP username
-                $mail->Password   = 'awxdijtvtjrblpgt';                        // SMTP password
-                $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-                $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-
-                //Recipients
-                $mail->setFrom('wingo6590@gmail.com');
-                $mail->addAddress($_POST["Email"]);     // Add a recipient
-
-                // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Appointment Cancellation';
-                $mail->Body    = "Hello " . $firstName . ",<br><br>Your appointment has been cancelled as per your request or due to unforeseen circumstances. If you have any questions or would like to reschedule, please contact us.<br><br>Best regards,<br>Le Couturier";
-
-                $mail->send();
-                echo 'Message has been sent';
-            } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
-        } else {
-            echo "No email address found for the customer.";
-        }
-    }
 }
 
 
@@ -224,7 +191,7 @@ if(isset($_POST['deleteCustomer'])){
     }
     // var_dump($subject);
      
-    ?>
+?>
 
 
 

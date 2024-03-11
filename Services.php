@@ -12,157 +12,141 @@
     <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
     <style>
-       .island-moments {
-        font-family: 'Island Moments', sans-serif;
-      }
-      .italiana{
-        font-family: 'Italiana', sans-serif;
-      }
-      .jacques{
-        font-family: 'Jacques Francois', serif;
-      }
-      .larger-text{
-        font-size:2.5rem;
-      }
       
-     
-      @media screen and (max-width: 600px) {
-      .Service1 img {
-          width: 100%; 
-          height: auto; 
-          border-radius: 50%; 
-          margin-top: 50px; 
-          margin-left: 10px;
-        }
-      }
+    .island-moments {
+      font-family: 'Island Moments', sans-serif;
+    }
+    
+    .italiana{
+      font-family: 'Italiana', sans-serif;
+    }
 
-      .Middle, .Bottom-left, .py-10 {
-        border-top: 1px solid black; 
-        margin-top: 100px; 
-      }
+    .jacques{
+      font-family: 'Jacques Francois', serif;
+    }
 
-      .Service1, .Middle, .Bottom-left {
-        display: flex;
-        margin-top: 100px; 
-      }
+    .larger-text{
+      font-size:2.5rem;
+    }
 
-      .text-content, .Gallery {
-        flex-basis: 70%; 
-      }
+    .Middle, .Bottom-left, .py-10 {
+      border-top: 1px solid black; 
+      margin-top: 100px; 
+    }
 
-      .Service1 {
-        display: flex; 
-        align-items: center; 
-        margin-top: 100px; 
-        margin-left: 20px; 
-      }
+    .Service1, .Middle, .Bottom-left {
+      display: flex;
+      margin-top: 100px; 
+    }
 
-      .announcement-popup {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
+    .text-content, .Gallery {
+      flex-basis: 70%; 
+    }
 
-      .popup-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        text-align: center;
-      }
+    .Service1 {
+      display: flex; 
+      align-items: center; 
+      margin-top: 100px; 
+      margin-left: 20px; 
+    }
 
-      .close-button {
-        float: right;
-        font-size: 30px;
-        cursor: pointer;
-      }
+    .announcement-popup {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-      .Service1 img {
-        width: 304px;
-        height: 304px;
-        flex-shrink: 0;
-        border-radius: 148.5px;
-        margin-right: 20px; 
-      }
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
 
-      .gallery-container {
-        max-width: 1000px;
-        position: relative;
-        margin: auto;
-        display: flex; 
-        justify-content: center; 
-        align-items: center;
-        margin-top: 190px;
-      }
+    .close-button {
+      float: right;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .Service1 img {
+      width: 304px;
+      height: 304px;
+      flex-shrink: 0;
+      border-radius: 148.5px;
+      margin-right: 20px; 
+    }
+
+    .gallery-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      margin-top: 190px;
+    }
 
       
-      .mySlides {
-        display: none;
-        max-width: 80%; /* Ensures image is responsive and doesn't overflow */
-        height: auto;
-      }
+    .mySlides {
+      display: none;
+      max-width: 80%; /* Ensures image is responsive and doesn't overflow */
+      height: auto;
+    }
 
-      @media screen and (max-width: 600px) {
-        .Service1, .Middle, .Bottom-left {
-          flex-direction: column;
-        }
-        .text-content, .Gallery {
-          flex-basis: auto; 
-        }
-        .mySlides {
-          max-width: 100%; 
-          height: auto;
-          display: block; 
-
-        }
-      }
-
-      /* Fading animation */
-      .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-      }
-
-      @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-      }
-
-
-      .text-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .Service1 h1 {
-        font-size: 50px;
-        font-family: 'Italiana';
-      }
-
-      .Service1 p {
-        font-size: 32px; 
-        font-family: 'Italiana';
-        margin-left: 20px;
-      }
-
-
-      .hidden {
+    @media (max-width: 770px) {
+      .Gallery {
         display: none;
       }
-      
-      a:hover, button:hover {
-        transform: scale(1.05);
-        transition: transform 0.3s ease;
-      }
+    }
 
-      @keyframes fadeInUp {
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+
+
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .Service1 h1 {
+      font-size: 50px;
+      font-family: 'Italiana';
+    }
+
+    .Service1 p {
+      font-size: 32px; 
+      font-family: 'Italiana';
+      margin-left: 20px;
+    }
+
+
+    .hidden {
+      display: none;
+    }
+      
+    a:hover, button:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -183,20 +167,21 @@
     }
 
     @keyframes fadeOutDown {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(20px);
-        }
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
     }
      
     .google-map-container iframe {
-      width: 100vw; /* Set the width to 100% of the viewport width */
-      height: 450px; /* Adjust height as needed */
-      margin-left: calc(-50vw + 50%); /* Center the map if it's in a container */
+      width: 100vw; 
+      height: 450px; 
+      margin-top: 50px;
+      margin-left: calc(-50vw + 50%); 
     }
     </style>
 </head>
@@ -209,7 +194,19 @@
         <a href="home.html" class="text-xl font-bold" style="color: #152266;" >
           <img src="img/Le-Couturier-new 1.png">
         </a>
+        </div>
       </div>
+      <div id ="ltwo">
+        <a href="adminLogin.php">
+          <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+            Sign In 
+          </button>
+        </a>
+        <a href="appointmentPage.php">
+        <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
+            Appointments
+        </button>
+        </a>
       </div>
       
       
@@ -331,7 +328,7 @@
   <div class="max-w-2xl mx-auto text-center" style="color: #99382C;">
     <p class="text-lg mb-5">If you require alterations or tailoring services, or if you have additional inquiries not addressed in our FAQs, feel free to reach out to us. Drop your message below, and we'll make every effort to respond promptly.</p>
     <h2 class="text-4xl font-bold mb-5">Contact Us</h2>
-    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" onsubmit="return validateEmail()">
         <input type="hidden" name="access_key" value="6e477460-799b-42ef-931b-0c7fddad4257">
         <input type="text" name="name" id="name" placeholder="Name" class="block w-full p-3 mb-4" required>
         <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-3 mb-4" required>
@@ -341,56 +338,56 @@
   </div>
 </div>
 
-      <!--Embeded Google Map-->
-      <div class="google-map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706548730171!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="450"></iframe>
-      </div>
+  <!--Embeded Google Map-->
+  <div class="google-map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.0245575995805!2d-71.12219652266681!3d42.3846233335475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3775408348aa1%3A0x515c1bbec9ee6f9!2sLe%20Couturier%20House%20of%20Alterations!5e0!3m2!1sen!2sus!4v1706548730171!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="450"></iframe>
+  </div>
     
  
 
-  <script>
-    //Start of Announcment pop-up  
-    window.onload = function() {
-      document.getElementById("announcementPopup").classList.remove("hidden");
-    };
+<script>
+  //Start of Announcment pop-up  
+  window.onload = function() {
+    document.getElementById("announcementPopup").classList.remove("hidden");
+  };
     
 
-    function closePopup() {
-      document.getElementById("announcementPopup").classList.add("hidden");
-      setTimeout(() => {
-        document.getElementById("contactUsSection").style.opacity = 1;
-      }, 500);
-    }
+  function closePopup() {
+    document.getElementById("announcementPopup").classList.add("hidden");
+    setTimeout(() => {
+      document.getElementById("contactUsSection").style.opacity = 1;
+    }, 500);
+  }
 
-    function closePopup() {
-    var popup = document.getElementById('announcementPopup');
+  function closePopup() {
+  var popup = document.getElementById('announcementPopup');
    
-    popup.classList.add('fadeOutDown');
+  popup.classList.add('fadeOutDown');
 
-    setTimeout(function() {
+  setTimeout(function() {
         popup.classList.add('hidden');
     }, 500); 
+  }
+  //End of Annoucment pop-up
+
+  window.addEventListener('scroll', () => {
+  const elements = document.querySelectorAll('.service-box');
+  const windowHeight = window.innerHeight;
+
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    if (position < windowHeight - 100) {
+      el.classList.add('slide-in');
     }
-     //End of Annoucment pop-up
-
-    window.addEventListener('scroll', () => {
-    const elements = document.querySelectorAll('.service-box');
-    const windowHeight = window.innerHeight;
-
-    elements.forEach(el => {
-      const position = el.getBoundingClientRect().top;
-      if (position < windowHeight - 100) {
-        el.classList.add('slide-in');
-      }
-    });
-    });
+  });
+  });
 
 
-    function initializeSlideshows() {
-    var galleries = document.getElementsByClassName("Gallery");
+  function initializeSlideshows() {
+  var galleries = document.getElementsByClassName("Gallery");
 
-    for (var g = 0; g < galleries.length; g++) {
-      createSlideshow(galleries[g], 3000 + g * 1000); // Each gallery changes slides at different intervals
+  for (var g = 0; g < galleries.length; g++) {
+    createSlideshow(galleries[g], 3000 + g * 1000); // Each gallery changes slides at different intervals
     }
   }
 
@@ -412,22 +409,31 @@
     showSlides();
   }
 
-    window.onload = function() {
-      initializeSlideshows();
+  window.onload = function() {
+    initializeSlideshows();
     
-    };
+  };
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-    var contactUsButtons = document.querySelectorAll('.contact-us-button');
+  document.addEventListener('DOMContentLoaded', (event) => {
+  var contactUsButtons = document.querySelectorAll('.contact-us-button');
 
-    contactUsButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        document.getElementById('contact-form-section').scrollIntoView({ 
-          behavior: 'smooth' 
-        });
+  contactUsButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      document.getElementById('contact-form-section').scrollIntoView({ 
+        behavior: 'smooth' 
       });
     });
   });
+  });
+
+  function validateEmail() {
+  var email = document.getElementById('email').value;
+  if (!email.includes('.com')) {
+    alert('Email must include .com');
+    return false; 
+  }
+    return true; 
+  }
 
   document.getElementById('contactForm').addEventListener('submit', function(event) {
     var formValid = this.checkValidity();
@@ -435,5 +441,5 @@
         event.preventDefault();
     }
   });
-  </script>
+</script>
 </body>

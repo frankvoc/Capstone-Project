@@ -7,23 +7,21 @@ function isPostRequest() {
 }
 
 
-function loginAdmin($email, $password) {
+function login($email, $pass) {
     global $db; 
     $result = [];
 
     // SQL statement to fetch the admin user
-    $stmt = $db->prepare("SELECT * FROM adminlogin WHERE adminemail = :email");
-    $stmt->bindValue(['email' => $email]);
-    $admin = $stmt->fetch();
+    $stmt = $db->prepare("SELECT * FROM adminlogin WHERE adminemail = :email and adminpassword :pass");
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':pass', $pass);
 
-    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                   
     }
     
-    return ($result);
+    return $result;
 }
-
 
 function getCustomers($timeFrame = null) {
     global $db;

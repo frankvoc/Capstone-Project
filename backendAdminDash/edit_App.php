@@ -88,25 +88,12 @@
     <title>Edit Appoitment</title>
 </head>
 <body>
-<header> 
-          <img src="img\Le-Couturier-new 1.png" alt="logo"> 
-          <div id ="ltwo">
-            <a href="Services.php">
-              <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color:#152266">
-                  Our Services 
-                </button></a>
-                <a href="adminLogin.php">
-                <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
-                  Sign In 
-                </button>
-                </a>
-                <a href="appointmentPage.php">
-                  <button class="bg-white hover:bg-gray-100 text-#152266-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" style=" color: #152266">
-                    Appointments
-                  </button>
-                  </a>
-          </div>
-  
+<header class="py-3 px-5" style="background-color:#C1373C;">
+    <div class="flex justify-between items-center w-full">
+        <a href="adminDashboard.php" class="text-xl font-bold text-black bg-white py-2 px-4 rounded border border-black" style="color: #152266;">Le Couturier</a>
+        <div class="text-lg font-semibold jacques text-white">Admin Dashboard</div>
+        <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
+    </div>
 </header>
     
 

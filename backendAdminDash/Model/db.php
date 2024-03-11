@@ -22,5 +22,5 @@ try{
 } catch (PDOException $e){
     die("Could not connect: " . $e->getMessage());
 }
-var_dump($dsn)
+
 ?>
