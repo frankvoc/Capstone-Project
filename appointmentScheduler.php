@@ -363,7 +363,7 @@ function updateCalendarHeader(month, year) {
             //displaying only active times
             availableTimeSlots.forEach(time => {
                 const timeSlotDiv = document.createElement('div');
-                timeSlotDiv.classList.add('time-slot', 'cursor-pointer', 'rounded', 'text-center', 'bg-gray-300', 'hover:bg-gray-400', 'p-2', 'm-2');
+                timeSlotDiv.classList.add('time-slot', 'cursor-pointer', 'rounded', 'text-center', 'bg-gray-300', 'hover:bg-gray-500', 'p-2', 'm-2');
                 timeSlotDiv.textContent = time;
                 timeSlotDiv.setAttribute('data-time', time);
                 timeSlotDiv.addEventListener('click', function() {
