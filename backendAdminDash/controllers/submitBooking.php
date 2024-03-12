@@ -31,4 +31,17 @@ try {
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
 }
+
+if(isset($_POST['confirmButton'])) {
+    $to = "dannycalexandre@gmail.com"; // Replace with your email address
+    $subject = "Appointment Booked ".$_POST['firstName'];
+    $message = $_POST['jobDescription'].$_POST['selectedDate'].$_POST['selectedTimeSlot'];
+    $headers = "From: ".$_POST['email'];
+
+    if(mail($to, $subject, $message, $headers)) {
+        echo "<p>Email sent successfully!</p>";
+    } else {
+        echo "<p>Failed to send email. Please try again later.</p>";
+    }
+}
 ?>

@@ -73,11 +73,20 @@ video{
   display: flex; 
   flex-direction: column;
 }
-.container{ 
+.card__container {
   display: flex;
-  grid-area: s; 
   align-items: center;
-  margin-left: 8rem;
+  justify-content: center; /* Center horizontally */
+  flex-direction: row; /* To stack the card containers vertically */
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  grid-area: s;
+  margin: 0 auto;
 }
 #mission{ 
     display: flex; 
