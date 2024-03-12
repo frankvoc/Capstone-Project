@@ -88,7 +88,7 @@
   </form>
 </body>
 </html>
-<script>
+<script data-cfasync="false" src="form-submission-handler.js">
 document.addEventListener('DOMContentLoaded', () => {
     //populate fields from sessionStorage appointmentScheduler
     document.getElementById('firstName').textContent = sessionStorage.getItem('firstName') || 'Not Provided';

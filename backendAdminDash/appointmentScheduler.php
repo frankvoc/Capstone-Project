@@ -360,7 +360,7 @@ function updateCalendarHeader(month, year) {
         .then(response => response.json())
         .then(bookedTimes => {
           console.log(bookedTimes);
-            const availableTimeSlots = ['9:30am', '12:30pm', '2:30pm'].filter(time => !bookedTimes.includes(time));
+            const availableTimeSlots = ['9:30', '12:30', '2:30'].filter(time => !bookedTimes.includes(time));
             //displaying only active times
             availableTimeSlots.forEach(time => {
                 const timeSlotDiv = document.createElement('div');
