@@ -23,9 +23,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.cpm" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css"> 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -125,6 +126,14 @@
     .dm-serif{
         font-family: 'DM Serif Display', serif; 
     }
+<<<<<<< Updated upstream
+=======
+    #great{ 
+        background-color: #D05B5F; 
+    }
+    
+    
+>>>>>>> Stashed changes
   </style>
 
 </head>
@@ -247,7 +256,7 @@ if(isset($_POST['deleteCustomer'])){
 
     <h2> Customers</h2>
 
-    <table class="table table-striped" >
+    <table class="table table-striped" id="great" style="background-color: #D05B5F;">
         <thead>
             <tr>
                 <th>ID</th>
