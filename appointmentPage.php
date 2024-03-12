@@ -27,29 +27,6 @@
     .larger-text{
       font-size:2.5rem;
     }
-    .announcement-popup {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  .close-button {
-    float: right;
-    font-size: 30px;
-    cursor: pointer;
-  }
   .hidden {
     display: none;
   }
@@ -92,14 +69,6 @@
     <img src="img/Appointment.jpg" class="w-full h-96 object-cover">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-25 flex items-center justify-center">
       <h1 class="text-white text-6xl font-bold jacques">Book by Service</h1>
-    </div>
-  </div>
-   <!--Pop-up Announcement Box-->
-   <div id="announcementPopup" class="announcement-popup hidden">
-    <div class="popup-content">
-      <span class="close-button" onclick="closePopup()">&times;</span>
-      <h2>Announcement</h2>
-      <p>announcement here</p>
     </div>
   </div>
     <!--Services reminder-->
