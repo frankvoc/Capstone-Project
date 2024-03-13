@@ -45,6 +45,7 @@ try {
 
     $mail->setFrom('dannycalexandre@gmail.com'); 
     $mail->addAddress($email); 
+    $mail->addAddress('dannycalexandre@gmail.com');
 
     $mail->isHTML(true); 
 
