@@ -126,14 +126,7 @@
     .dm-serif{
         font-family: 'DM Serif Display', serif; 
     }
-<<<<<<< Updated upstream
-=======
-    #great{ 
-        background-color: #D05B5F; 
-    }
-    
-    
->>>>>>> Stashed changes
+
   </style>
 
 </head>
