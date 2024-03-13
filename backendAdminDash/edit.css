@@ -34,7 +34,6 @@ header{
 
     display: flex;
     align-items: center; 
-    grid-area: n; 
     justify-content:space-between;
     background-color: #C1373C;
 }

@@ -112,10 +112,10 @@ video{
     padding-right: 2rem;
 }
 #cara{
-  grid-area: t; 
+  grid-area: b; 
 }
 #contact{ 
-  grid-area: b;
+  grid-area: t;
   margin-top: 5rem;
 }
 .google-map-container{
