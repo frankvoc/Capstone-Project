@@ -28,6 +28,7 @@ main{
                        "s s s s s s"
                        "w w w w w w"
                        "b b b b b b"
+                       "t t t t t t"
                        "m m m m m m";
   position: relative; 
   background-color: #F5EAEB;
@@ -74,11 +75,8 @@ video{
   flex-direction: column;
 }
 .card__container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center horizontally */
-  flex-direction: row; /* To stack the card containers vertically */
-  margin: 0 auto;
+  display: inline-block; /* Display the card container as inline-block */
+  text-align: left;
 }
 
 .container {
@@ -86,6 +84,7 @@ video{
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   grid-area: s;
+  height: 100vh;
   margin: 0 auto;
 }
 #mission{ 
@@ -94,6 +93,7 @@ video{
     padding-top: 10%;
     grid-area: w; 
 }
+
 #text{
     display: flex; 
     flex-direction: column;
@@ -110,6 +110,9 @@ video{
 }
 #flickT{
     padding-right: 2rem;
+}
+#cara{
+  grid-area: t; 
 }
 #contact{ 
   grid-area: b;
