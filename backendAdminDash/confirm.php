@@ -44,12 +44,6 @@
       <div class="bg-white border border-black py-2 px-4 rounded">
       <a href="adminDashboard.php" class="text-xl font-bold" style="color: #152266;">Le Couturier</a>
     </div>
-  
-    </div>
-    <div class="text-lg font-semibold jacques text-white text-center flex-1">Admin Dashboard</div>
-    <div class="flex items-center gap-4">
-      <a href="adminLogin.php" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Logout</a>
-    </div>
     </div>
 </div>
     <div class="container mx-auto p-4">
@@ -88,7 +82,8 @@
   </form>
 </body>
 </html>
-<script data-cfasync="false" src="form-submission-handler.js">
+
+<script>
 document.addEventListener('DOMContentLoaded', () => {
     //populate fields from sessionStorage appointmentScheduler
     document.getElementById('firstName').textContent = sessionStorage.getItem('firstName') || 'Not Provided';
@@ -130,4 +125,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
