@@ -81,8 +81,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Island+Moments&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="edit.css"> 
-  <link rel="stylesheet" href="assets/css/styles.css">
+  
 </head>
 <main> 
     <title>Edit Appoitment</title>
