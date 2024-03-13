@@ -64,18 +64,23 @@ function deleteCustomer ($Customer_ID){
     //needs global scope since object is coming from outside the function
     global $db;
 
-    $results = "Data was not deleted.";
+    $results = "Data was not deleted."; 
+    $stmt = $db->prepare("SELECT Email FROM customers WHERE Customer_ID = :Customer_ID");
+    $stmt->bindValue(':Customer_ID', $Customer_ID);
+    $stmt->execute();
+    $email = $stmt->fetchColumn(); // Fetch the email associated with the customer
+
+
     $stmt = $db->prepare("DELETE FROM customers WHERE Customer_ID = :Customer_ID");
 
     $stmt->bindValue(':Customer_ID', $Customer_ID);
 
     if($stmt->execute() && $stmt->rowCount() > 0) {
-        $results = "Data was deleted.";
+        $results = $email; 
     }
 
     return ($results);
 }
-
 function updateCustomer ($Customer_ID, $FirstName, $LastName, $ApptTime, $Stat, $Email, $PhoneNum, $JobDesc){
     //grab $db object - 
     //needs global scope since object is coming from outside the function
