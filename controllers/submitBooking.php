@@ -1,5 +1,10 @@
 <?php
-require_once '../model/db.php';
+require_once '../Model/db.php';
+use PHPMailer\PHPMailer\PHPMailer; 
+use PHPMailer\PHPMailer\Exception; 
+require '../phpmailer/src/Exception.php'; 
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php'; 
 
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
@@ -27,6 +32,28 @@ try {
         ':phone' => $phoneDigitsOnly,
         ':jobDescription' => $jobDescription,
     ]);
+
+    // Email sending part
+    $mail = new PHPMailer(true); 
+    $mail->isSMTP(); 
+    $mail->Host = 'smtp.gmail.com'; 
+    $mail->SMTPAuth = true; 
+    $mail->Username = 'dannycalexandre@gmail.com'; 
+    $mail->Password = 'bmtowlhurolxdcic'; 
+    $mail->SMTPSecure = "ssl"; 
+    $mail->Port = 465; 
+
+    $mail->setFrom('dannycalexandre@gmail.com'); 
+    $mail->addAddress($email); 
+    $mail->addAddress('second@example.com');
+
+    $mail->isHTML(true); 
+
+    $mail->Subject = 'Your Appointment Confirmation'; 
+    $mail->Body = 'Dear ' . $firstName . ',<br><br>Your appointment has been successfully scheduled.<br><br>Appointment Details:<br>Date: ' . $selectedDate . '<br>Time: ' . $selectedTimeSlot . '<br><br>Thank you!'; 
+
+    $mail->send(); 
+
     echo "success";
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
