@@ -37,7 +37,7 @@
     </header>
     <div class="flex min-h-screen items-center justify-center">
     <div class="flex-1 flex justify-center">
-      <img src="img/Woman Standing with Laptop.png" alt="Woman Standing with Laptop" class="absolute bottom-0 left-60 m-8 top-40">
+      <!-- <img src="img/Woman Standing with Laptop.png" alt="Woman Standing with Laptop" class="absolute bottom-0 left-60 m-8 top-40"> -->
     </div>
   <div class="text-center py-6">
     <h2 class="text 2x1 font-semibold mb-6 dm-serif">Log In</h2>
